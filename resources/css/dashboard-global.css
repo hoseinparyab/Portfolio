@@ -1,0 +1,277 @@
+@font-face {
+  font-family: IRANYekanXVF;
+
+  src: url("../font/woff/IRANYekanXVF.woff") format("woff"),
+    url("../font/woff2/IRANYekanXVF.woff2") format("woff2");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "IRANYekanXVF", sans-serif;
+
+}
+
+body{
+    background-color: var(--bg-color);
+}
+:root {
+  --bg-color: #1b2735;
+  --body-color: #9fa0a1;
+  --focus-color: #fff;
+  --gradient-text-color: rgba(255, 255, 255, 0.404);
+  --gradient-color: #07070e;
+  --text-color: #bebebe;
+  --linkhover-color: #fff;
+  --link-color: #8ab4f8;
+  --bento-color: #110f18;
+  --bentoborder-color: #64646452;
+  --star-color: #fff;
+  --active-color: #fff;
+  --disabled-color: #888;
+  --square-color:#24313b9d;
+  --square-hover-color:#24313b;
+  --overlay-color: rgba(0, 0, 0, 0.8);
+  /* Contact button dark mode colors */
+  --contact-bg-gradient-start: rgba(71, 81, 92, 1);
+  --contact-bg-gradient-end: rgba(11, 21, 30, 1);
+  --contact-text-color: rgba(255, 255, 255, 0.66);
+  --contact-box-shadow-color: rgba(255, 255, 255, 0.1);
+  --contact-before-bg-gradient: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --contact-hover-text-color: rgba(255, 255, 255, 1);
+  --hover-color1: rgba(73, 74, 90, 0.6);
+  --hover-color2: rgba(73, 74, 90, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+.dashboard-container {
+min-height: 100vh;
+}
+
+.navigation {
+  background-color: var(--bento-color);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1em;
+  height: 70px;
+  color: var(--text-color);
+z-index: 2;
+}
+
+.top-bar {
+  width: 100%;
+  background-color: var(--bento-color);
+  height: 70px;
+  padding: 1em 1.5em;
+}
+
+nav.menu {
+  width: 100%;
+  padding: 1em;
+
+
+}
+
+.menu-item {
+    color: var(--text-color);
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.menu-item:hover{
+    color: var(--linkhover-color);
+    transition: 0.2s;
+    background-color: var(--square-hover-color);
+}
+
+.dashboard {
+  background-color: var(--bg-color);
+  transition: 0.2s;
+}
+
+.icon{
+    color: var(--text-color);
+     transition: color 0.2s;
+}
+.icon:hover{
+    transition: color 0.2s;
+    color: var(--linkhover-color);
+}
+
+.admin-info{
+    cursor: pointer;
+        color: var(--text-color);
+}
+
+.admin-pic{
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+}
+
+nav.menu span{
+  margin-top: 10px;
+  color: var(--disabled-color);
+}
+
+/* Search overlay styles */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-overlay.hidden {
+  display: none;
+}
+
+.search-input {
+  color: white;
+  width: 50%;
+  max-width: 400px;
+  padding: 1em 1.5em;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: solid 1px white;
+  outline: none;
+}
+
+/* Disable scrolling when overlay is open */
+body[style*="overflow: hidden"] {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar container */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  right: -280px; /* Initially hidden off-screen to the right */
+  width: 280px;
+  height: 100vh; /* Full viewport height */
+  opacity: 1;
+  background-color: var(--bento-color);
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  transition: right 0.3s ease;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+/* Sidebar visible state */
+.sidebar-container.active {
+  right: 0;
+}
+
+/* Sidebar content padding */
+.sidebar-content {
+  padding: 20px;
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Sidebar overlay visible */
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Disable body scroll when sidebar is open */
+body.sidebar-open {
+  overflow: hidden;
+}
+
+
+.admin-info {
+  position: relative;
+  cursor: pointer;
+}
+
+
+.top-bar {
+  position: relative;
+}
+
+/* Remove hover effect on top-bar for submenu */
+.top-bar .info-hover-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bento-color);
+  border-radius: 6px;
+  margin-top: 4px;
+  box-sizing: border-box;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  pointer-events: auto;
+}
+
+/* Remove any hover effect on top-bar */
+.top-bar:hover .info-hover-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.admin-info:hover + .info-hover-content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.admin-info:hover .info-hover-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dashboard-content-container{
+  padding: 1.5em;
+  display: grid;
+  gap: 2em;
+}
+.dashboard-content-container > .grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: var(--text-color);
+  border-radius: 1em;
+  overflow: hidden;
+  border: 1px solid var(--bentoborder-color);
+  padding: 1.5em;
+  background-color: var(--square-color);
+  justify-content: top;
+}

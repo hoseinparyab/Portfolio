@@ -1,0 +1,127 @@
+const htmlElement = document.documentElement;
+
+  // Load saved theme preference or set default to dark
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark" || !savedTheme) {
+    htmlElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    htmlElement.classList.remove("dark");
+  }
+
+  // Select all toggle switches
+  const toggleSwitches = document.querySelectorAll(".toggle-switch");
+
+  // Function to update all toggle switches UI based on theme
+  function updateToggleSwitches(theme) {
+    toggleSwitches.forEach((toggleSwitch) => {
+      const lightOption = toggleSwitch.querySelector(".light-option");
+      const darkOption = toggleSwitch.querySelector(".dark-option");
+      const slider = toggleSwitch.querySelector(".toggle-slider");
+
+      if (theme === "dark") {
+        darkOption.classList.add("active");
+        lightOption.classList.remove("active");
+        slider.style.transform = "translateX(0)";
+      } else {
+        lightOption.classList.add("active");
+        darkOption.classList.remove("active");
+        slider.style.transform = "translateX(100%)";
+      }
+    });
+  }
+
+  // Initialize toggle switches UI
+  updateToggleSwitches(
+    htmlElement.classList.contains("dark") ? "dark" : "light"
+  );
+
+  // Add click event listener to each toggle switch
+  toggleSwitches.forEach((toggleSwitch) => {
+    toggleSwitch.addEventListener("click", () => {
+      const isDark = htmlElement.classList.contains("dark");
+      if (isDark) {
+        htmlElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        updateToggleSwitches("light");
+      } else {
+        htmlElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        updateToggleSwitches("dark");
+      }
+    });
+  });
+=======
+document.addEventListener("DOMContentLoaded", () => {
+  const htmlElement = document.documentElement;
+
+  // Reactive variable to track current theme
+  window.currentTheme = localStorage.getItem("theme") || "dark";
+
+  // Load saved theme preference or set default to dark
+  const savedTheme = window.currentTheme;
+  if (savedTheme === "dark" || !savedTheme) {
+    htmlElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    htmlElement.classList.remove("dark");
+  }
+
+  // Select all toggle switches
+  const toggleSwitches = document.querySelectorAll(".toggle-switch");
+
+  // Function to update all toggle switches UI based on theme
+  function updateToggleSwitches(theme) {
+    toggleSwitches.forEach((toggleSwitch) => {
+      const lightOption = toggleSwitch.querySelector(".light-option");
+      const darkOption = toggleSwitch.querySelector(".dark-option");
+      const slider = toggleSwitch.querySelector(".toggle-slider");
+
+      if (theme === "dark") {
+        darkOption.classList.add("active");
+        lightOption.classList.remove("active");
+        slider.style.transform = "translateX(0)";
+      } else {
+        lightOption.classList.add("active");
+        darkOption.classList.remove("active");
+        slider.style.transform = "translateX(100%)";
+      }
+    });
+  }
+
+  // Initialize toggle switches UI
+  updateToggleSwitches(
+    htmlElement.classList.contains("dark") ? "dark" : "light"
+  );
+
+  // Add click event listener to each toggle switch
+  toggleSwitches.forEach((toggleSwitch) => {
+    toggleSwitch.addEventListener("click", () => {
+      const isDark = htmlElement.classList.contains("dark");
+      if (isDark) {
+        htmlElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        window.currentTheme = "light";
+        updateToggleSwitches("light");
+      } else {
+        htmlElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        window.currentTheme = "dark";
+        updateToggleSwitches("dark");
+      }
+    });
+  });
+
+  // Listen for localStorage changes (cross-tab)
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme") {
+      window.currentTheme = event.newValue;
+      if (window.currentTheme === "dark") {
+        htmlElement.classList.add("dark");
+        updateToggleSwitches("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+        updateToggleSwitches("light");
+      }
+    }
+  });

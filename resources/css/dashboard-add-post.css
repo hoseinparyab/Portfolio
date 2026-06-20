@@ -1,0 +1,35 @@
+.dashboard-content-container {
+  grid-template:
+    "a";
+}
+.grid{
+    grid-area: a;
+}
+
+#cke_editor{
+    color: var(--text-color);
+    background-color: var(--bg-color);
+        border-radius: 1em !important;
+    overflow: hidden !important;
+    border: 1px solid var(--bentoborder-color);
+}
+
+#cke_editor *{
+    color: white;
+    background-color: var(--bg-color);
+}
+
+div.image{
+    position: relative;
+}
+
+.close-icon{
+    background-color: gray;
+    border-radius: 100%;
+    padding: 5px;
+position: absolute;
+top: -5px;
+left: -5px;
+cursor: pointer;
+}
+

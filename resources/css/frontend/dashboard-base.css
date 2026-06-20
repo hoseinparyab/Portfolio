@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@source "../../views/**/*.blade.php";
+@source "../**/*.js";
+@source "../../js/frontend/**/*.js";
+@import "../dashboard-global.css";
+@import "../../src/libraries/fontawesome/css/all.min.css";

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ویرایش حساب | مدیریت</title>
+
+    <!-- Tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome library -->
+    <link rel="stylesheet" href="./src/libraries/fontawesome/css/all.min.css" />
+    <script src="./src/libraries/fontawesome/js/all.min.js"></script>
+    <!-- global css -->
+    <link rel="stylesheet" href="./src/css/dashboard-global.css" />
+    <!-- dashboard page css -->
+    <link rel="stylesheet" href="./src/css/dashboard-account-settings.css" />
+    <link rel="icon" type="image/x-icon" href="/src/img/logo.ico" />
+
+    <!-- apex charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <div class="dashboard-container flex flex-row w-[100vw]">
+      <div class="navigation hidden xl:flex-2 xl:block">
+        <div class="logo-container">
+          <a
+            href="/dashboard.html"
+            class="logo flex justify-start items-center gap-2"
+          >
+            <img
+              src="./src/img/logo-gradient.svg"
+              alt="portfolio logo"
+              class="w-14"
+            />
+            <span class="font-bold text-lg">بنتوفولیو</span>
+          </a>
+        </div>
+        <nav class="menu flex flex-col gap-2">
+          <span class="seperator text-sm">ناوبری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard.html"
+          >
+            <i class="fa-solid fa-grid-2 fa-xl"></i>
+            داشبورد
+          </a>
+          <span class="seperator text-sm">بلاگ</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-add-post.html"
+          >
+            <i class="fa-solid fa-pencil fa-xl"></i>
+            ایجاد پست جدید
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-posts.html"
+          >
+            <i class="fa-solid fa-newspaper fa-xl"></i>
+            مشاهده پست ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-categories.html"
+          >
+            <i class="fa-solid fa-layer-group fa-xl"></i>
+            دسته بندی ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-comments.html"
+          >
+            <i class="fa-solid fa-comments fa-xl"></i>
+            نظرات
+          </a>
+          <span class="seperator text-sm">تنظیمات صفحات</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-memo fa-xl"></i>
+            ویرایش صفحه اصلی
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-briefcase fa-xl"></i>
+            نمونه کار ها
+          </a>
+          <span class="seperator text-sm">کاربران</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-users.html"
+          >
+            <i class="fa-solid fa-users fa-xl"></i>
+            مدیریت کاربران
+          </a>
+
+          <span class="seperator text-sm">حساب کاربری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-account-settings.html"
+          >
+            <i class="fa-solid fa-gears fa-xl"></i>
+            تنظیمات حساب
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-login.html"
+          >
+            <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+            خروج
+          </a>
+        </nav>
+      </div>
+      <div class="dashboard flex-10">
+        <div class="top-bar flex flex-row items-center justify-between">
+          <div class="flex flex-row justify-between items-center gap-4">
+            <a class="side-bar block xl:hidden" href="#">
+              <i
+                class="icon fa-solid fa-bars-sort fa-flip-horizontal fa-lg"
+              ></i>
+            </a>
+            <a class="search" href="#">
+              <i class="icon fa-solid fa-magnifying-glass fa-lg"></i>
+            </a>
+          </div>
+          <div class="flex flex-row gap-5 items-center">
+            <a class="hidden xl:block" href="./dashboard-account-settings.html">
+              <i class="icon fa-solid fa-gear fa-lg"></i>
+            </a>
+            <div
+              class="admin-info flex flex-row justify-between items-center gap-2"
+            >
+              <img
+                class="admin-pic"
+                src="./src/img/Profile Picture.jpg"
+                alt=""
+              />
+
+              <div class="info flex flex-col gap-1">
+                <span class="role text-xs">مدیر سایت</span>
+                <span class="username font-semibold text-xs">برهان مرتضوی</span>
+              </div>
+              <div class="info-hover-content">
+                <div class="flex flex-col gap-2 p-1">
+                  <!-- Content to show on hover -->
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./index.html"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    مشاهده سایت
+                  </a>
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./dashboard-account-settings.html"
+                  >
+                    <i class="fa-solid fa-gears"></i>
+                    تنظیمات
+                  </a>
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./dashboard-login.html"
+                  >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    خروج
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-content-container w-full">
+          <!-- main content here -->
+          <div class="grid w-[100%]">
+            <h1 class="text-lg font-semibold">ویرایش اطلاعات حساب کاربری</h1>
+
+            <form class="mx-auto w-full">
+              <div
+                class="flex flex-row items-center justify-between gap-8 mb-5"
+              >
+                <label
+                  for="profile-pic"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >تصویر حساب کاربری</label
+                >
+                <img
+                  src="./src/img/Profile Picture.jpg"
+                  alt="profile picture"
+                  class="w-20 h-20 rounded-full object-cover object-center"
+                />
+              </div>
+
+              <div class="flex items-center justify-center w-full mb-5">
+                <label
+                  for="dropzone-file"
+                  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6"
+                  >
+                    <svg
+                      class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 16"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                      />
+                    </svg>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                      <span class="font-semibold">برای بارگذاری کلیک کنید</span>
+                      و یا عکس مورد نظر را به اینجا بکشید
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      SVG, PNG, JPG یا GIF (حداکثر حجم 2 مگابایت)
+                    </p>
+                  </div>
+                  <input id="dropzone-file" type="file" class="hidden" />
+                </label>
+              </div>
+
+              <div class="mb-5">
+                <label
+                  for="email-address-icon"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >ایمیل</label
+                >
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 16"
+                    >
+                      <path
+                        d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
+                      />
+                      <path
+                        d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    id="email-address-icon"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="name@flowbite.com"
+                  />
+                </div>
+              </div>
+              <div class="mb-5">
+                <label
+                  for="email-address-icon"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >نام کاربری</label
+                >
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    id="username"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="نام کاربری"
+                  />
+                </div>
+              </div>
+              <div class="mb-5">
+                <label
+                  for="message"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >بیوگرافی</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="بیوگرافی کوتاه شما جهت نمایش در پروفایل"
+                ></textarea>
+              </div>
+              <div class="mb-5">
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >کلمه عبور</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  value="testpassword"
+                  class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+                  required
+                />
+              </div>
+              <div class="mb-5">
+                <label
+                  for="repeat-password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >تکرار کلمه عبور</label
+                >
+                <input
+                  type="password"
+                  id="repeat-password"
+                  value="testpassword"
+                  class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+                  required
+                />
+              </div>
+              <button
+                type="cancel"
+                class="cursor-pointer text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800"
+              >
+                لغو
+              </button>
+              <button
+                type="submit"
+                class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                ویرایش
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="search-overlay" class="search-overlay hidden">
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="جستجو..."
+        autofocus
+      />
+    </div>
+
+    <!-- Sidebar container -->
+    <div id="sidebar" class="sidebar-container">
+      <!-- Sidebar content can be added here -->
+      <div class="sidebar-content">
+        <!-- side-bar menu content -->
+        <div class="logo-container">
+          <a
+            href="/dashboard.html"
+            class="logo flex justify-start items-center gap-2"
+          >
+            <img
+              src="./src/img/logo-gradient.svg"
+              alt="portfolio logo"
+              class="w-14"
+            />
+            <span class="font-bold text-lg">بنتوفولیو</span>
+          </a>
+        </div>
+        <nav class="menu flex flex-col gap-2">
+          <span class="seperator text-sm">ناوبری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard.html"
+          >
+            <i class="fa-solid fa-grid-2 fa-xl"></i>
+            داشبورد
+          </a>
+          <span class="seperator text-sm">بلاگ</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-add-post.html"
+          >
+            <i class="fa-solid fa-pencil fa-xl"></i>
+            ایجاد پست جدید
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-posts.html"
+          >
+            <i class="fa-solid fa-newspaper fa-xl"></i>
+            مشاهده پست ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-categories.html"
+          >
+            <i class="fa-solid fa-layer-group fa-xl"></i>
+            دسته بندی ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-comments.html"
+          >
+            <i class="fa-solid fa-comments fa-xl"></i>
+            نظرات
+          </a>
+          <span class="seperator text-sm">تنظیمات صفحات</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-memo fa-xl"></i>
+            ویرایش صفحه اصلی
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-briefcase fa-xl"></i>
+            نمونه کار ها
+          </a>
+          <span class="seperator text-sm">کاربران</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-users.html"
+          >
+            <i class="fa-solid fa-users fa-xl"></i>
+            مدیریت کاربران
+          </a>
+
+          <span class="seperator text-sm">حساب کاربری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-account-settings.html"
+          >
+            <i class="fa-solid fa-gears fa-xl"></i>
+            تنظیمات حساب
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-login.html"
+          >
+            <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+            خروج
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="./src/js/overlay.js"></script>
+  </body>
+</html>

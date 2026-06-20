@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Global css -->
+    <link rel="stylesheet" href="./src/css/global.css" />
+    <!-- stars css -->
+    <link rel="stylesheet" href="./src/css/stars.css" />
+    <!-- 404 Css -->
+    <link rel="stylesheet" href="./src/css/404.css" />
+    <!-- Tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome library -->
+    <link rel="stylesheet" href="./src/libraries/fontawesome/css/all.min.css" />
+    <script src="./src/libraries/fontawesome/js/all.min.js"></script>
+
+    <title>بنتوفولیو | نمونه کار ها</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/src/img/logo.ico" />
+  </head>
+  <body>
+    <div class="night-wrapper">
+      <div class="night">
+        <div
+          class="shooting_star"
+          style="
+            top: 12%;
+            left: 78%;
+            animation-delay: 1200ms;
+            animation-duration: 3200ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 45%;
+            left: 10%;
+            animation-delay: 4500ms;
+            animation-duration: 2800ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 80%;
+            left: 55%;
+            animation-delay: 2300ms;
+            animation-duration: 3500ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 30%;
+            left: 40%;
+            animation-delay: 600ms;
+            animation-duration: 3000ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 65%;
+            left: 85%;
+            animation-delay: 5100ms;
+            animation-duration: 2700ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 20%;
+            left: 25%;
+            animation-delay: 3700ms;
+            animation-duration: 3300ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 90%;
+            left: 15%;
+            animation-delay: 1500ms;
+            animation-duration: 3100ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 55%;
+            left: 70%;
+            animation-delay: 2900ms;
+            animation-duration: 2900ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 40%;
+            left: 90%;
+            animation-delay: 4000ms;
+            animation-duration: 3400ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 75%;
+            left: 35%;
+            animation-delay: 1000ms;
+            animation-duration: 3600ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 10%;
+            left: 50%;
+            animation-delay: 2000ms;
+            animation-duration: 3000ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 85%;
+            left: 80%;
+            animation-delay: 3200ms;
+            animation-duration: 2800ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 25%;
+            left: 60%;
+            animation-delay: 4800ms;
+            animation-duration: 3500ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 60%;
+            left: 20%;
+            animation-delay: 700ms;
+            animation-duration: 3100ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 35%;
+            left: 75%;
+            animation-delay: 5400ms;
+            animation-duration: 3300ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 50%;
+            left: 5%;
+            animation-delay: 2600ms;
+            animation-duration: 2900ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 70%;
+            left: 45%;
+            animation-delay: 3800ms;
+            animation-duration: 3200ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 15%;
+            left: 30%;
+            animation-delay: 1100ms;
+            animation-duration: 3000ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 95%;
+            left: 65%;
+            animation-delay: 4300ms;
+            animation-duration: 3400ms;
+          "
+        ></div>
+        <div
+          class="shooting_star"
+          style="
+            top: 5%;
+            left: 15%;
+            animation-delay: 900ms;
+            animation-duration: 3100ms;
+          "
+        ></div>
+      </div>
+      <div class="stars">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" aria-hidden="true">
+      <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+      <!-- Add mobile menu content here if needed -->
+      <div
+        class="flex flex-col h-[100%] w-[100%] justify-center items-center gap-10"
+      >
+        <nav class="menu flex flex-col justify-center">
+          <ul class="flex flex-col gap-12">
+            <li>
+              <a
+                href="./index.html"
+                class="flex items-center justify-center gap-4 link"
+              >
+                <i class="fa-solid fa-house text-xl link-icon fa-xl"></i>
+                <span class="menu_item link-text text-xl">خانه</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./portfolios.html"
+                class="flex items-center justify-center gap-4 link"
+              >
+                <i class="fa-solid fa-folder-open text-xl link-icon fa-xl"></i>
+                <span class="menu_item link-text text-xl">پروژه‌ها</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./posts-archive.html"
+                class="flex items-center justify-center gap-4 link"
+              >
+                <i class="fa-solid fa-newspaper text-xl link-icon fa-xl"></i>
+                <span class="menu_item link-text text-xl">بلاگ</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="theme-switch bento p-2">
+          <div class="toggle-switch">
+            <div class="toggle-option active light-option" data-theme="light">
+              <i class="fa-solid fa-sun-bright"></i>
+            </div>
+            <div class="toggle-option dark-option" data-theme="dark">
+              <i class="fa-solid fa-moon-stars"></i>
+            </div>
+            <div class="toggle-slider"></div>
+          </div>
+        </div>
+
+        <button class="contact-button">
+          ارتباط با من
+          <i class="fa-solid fa-phone"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="bento-container my-4" id="bento-container">
+      <header class="header bento-boxes">
+        <div class="bento bento-boxes">
+          <div class="card-border"></div>
+          <div
+            class="bento-content flex flex-row items-center justify-between header-padding rounded-2xl"
+          >
+            <div class="website-logo flex-1">
+              <a href="/" class="logo flex justify-start items-center gap-2">
+                <img
+                  src="./src/img/logo-gradient.svg"
+                  alt="portfolio logo"
+                  class="w-14"
+                />
+                <span class="header font-semibold text-lg logo-text"
+                  >بنتوفولیو</span
+                >
+              </a>
+            </div>
+
+            <nav class="menu flex-2 justify-center hidden lg:flex">
+              <ul class="flex flex-row gap-12">
+                <li>
+                  <a
+                    href="./index.html"
+                    class="flex items-center justify-center gap-2 link"
+                  >
+                    <i class="fa-solid fa-house text-xl link-icon"></i>
+                    <span class="menu_item link-text">خانه</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="./portfolios.html"
+                    class="flex items-center justify-center gap-2 link"
+                  >
+                    <i class="fa-solid fa-folder-open text-xl link-icon"></i>
+                    <span class="menu_item link-text">پروژه‌ها</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="./posts-archive.html"
+                    class="flex items-center justify-center gap-2 link"
+                  >
+                    <i class="fa-solid fa-newspaper text-xl link-icon"></i>
+                    <span class="menu_item link-text">بلاگ</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="buttons flex flex-1 justify-end gap-4 items-center">
+              <div class="theme-switch bento p-2 hidden lg:flex">
+                <div class="toggle-switch">
+                  <div
+                    class="toggle-option active light-option"
+                    data-theme="light"
+                  >
+                    <i class="fa-solid fa-sun-bright"></i>
+                  </div>
+                  <div class="toggle-option dark-option" data-theme="dark">
+                    <i class="fa-solid fa-moon-stars"></i>
+                  </div>
+                  <div class="toggle-slider"></div>
+                </div>
+              </div>
+              <button class="contact-button hidden lg:flex">
+                ارتباط با من
+                <i class="fa-solid fa-phone"></i>
+              </button>
+              <button class="mobile-menu-button flex lg:hidden">
+                <i class="fa-solid fa-bars fa-xl icon-hover"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="archive bento bento-boxes">
+        <div class="card-border"></div>
+        <div class="bento-content main-content flex flex-col gap-6">
+          <div class="bar flex flex-row justify-between items-center gap-4">
+            <div class="breadcrumbs">
+              <a class="main text-sm" href="/index.html">
+                <i class="fa-solid fa-house"></i>
+                صفحه اصلی
+              </a>
+              <span>></span>
+              <a class="main text-sm" href="/index.html"> یافت نشد! </a>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center items-center gap-8 justify-center h-[100%]">
+                      <h1 class="text-xl font-bold text-center">
+            متاسفانه صفحه مورد نظر شما یافت نشد!
+          </h1>
+            <img
+              class="not-found"
+              src="./src/img/not-found.png"
+              alt="Page Not Found 404"
+            />
+            <a
+              href="./index.html"
+              class="flex flex-row justify-center items-center gap-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              <span class="text-white">بازگشت به صفحه اصلی</span>
+              <i class="fa-solid fa-turn-down-left text-white"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="flex flex-col-reverse items-center justify-center lg:flex-row gap-4 lg:justify-between my-8"
+    >
+      <span class="copy-right text-color-theme text-base">
+        طراحی و اجرا توسط تیم توسعه
+        <a href="https://najino.ir"
+          ><span class="text-emphasize">ناجینو</span></a
+        >
+        - 1404
+      </span>
+      <div class="socials flex flex-row gap-6">
+        <a href="#"
+          ><i
+            class="fa-brands fa-whatsapp text-xl text-color-theme social fa-lg"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="fa-brands fa-youtube text-xl text-color-theme social fa-lg"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="fa-brands fa-linkedin text-xl text-color-theme social fa-lg"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="fa-brands fa-instagram text-xl text-color-theme social fa-lg"
+          ></i
+        ></a>
+      </div>
+    </footer>
+    <!-- Actions JS File -->
+    <script src="./src/js/index.js"></script>
+  </body>
+</html>

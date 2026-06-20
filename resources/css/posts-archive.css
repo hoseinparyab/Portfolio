@@ -1,0 +1,185 @@
+.bento-container {
+  display: grid;
+  grid-gap: 1em;
+}
+
+header {
+  grid-area: z;
+}
+
+.archive {
+  grid-area: a;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs > a,
+.breadcrumbs > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.breadcrumbs > a:hover {
+  transition: color 0.3s;
+  color: var(--linkhover-color);
+}
+
+.bento-boxes {
+  min-height: 0; /* NEW */
+  min-width: 0; /* NEW; needed for Firefox */
+}
+
+/* card css */
+
+.card {
+  background-color: var(--bento-color);
+  border: solid 1px var(--bentoborder-color);
+  border-radius: 1em;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+.card:hover{
+    transition: background-color 0.3s;
+    background-color: var(--square-hover-color);
+}
+
+.card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.card img{
+    aspect-ratio: 16/9;
+    object-fit: fill;
+}
+
+.card-paragraph {
+  line-height: 2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.orange {
+  color: orange;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: rgb(79, 79, 238);
+}
+.green {
+  color: rgb(25, 189, 25);
+}
+.yellow {
+  color: yellow;
+}
+
+.tag {
+  cursor: pointer;
+  display: inline‐block;
+  background-color: var(--square-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+.tag:hover {
+  background-color: var(--square-hover-color);
+  transition: 0.3s;
+}
+
+.card-info {
+  padding: 20px;
+}
+/* card css end */
+.pagination-container{
+  direction: ltr;
+  background-color: var(--square-color);
+}
+.selected-page{
+  background-color: var(--square-hover-color);
+}
+a.page:hover{
+  background-color: var(--square-hover-color);
+  color: var(--linkhover-color);
+}
+/* Responsive Design for Grids */
+@media (max-width: 639px) {
+  .bento-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template:
+      "z z z z z"
+      "a a a a a";
+  }
+}
+
+hr {
+  color: var(--bentoborder-color);
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .bento-container {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template:
+      "z z z z z z"
+      "a a a a a a";
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-container {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template:
+      "z z z z z z z z"
+      "a a a a a a a a";
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .bento-container {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template:
+      "z z z z z z z z z z z"
+      "a a a a a a a a a a a";
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .bento-container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template:
+      "z z z z z z z z z z z z"
+      "a a a a a a a a a a a a";
+  }
+}
+
+@media (min-width: 1536px) {
+  .bento-container {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template:
+      "z z z z z z z z"
+      "a a a a a a a a";
+  }
+}

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دسته بندی ها | مدیریت</title>
+
+    <!-- Tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome library -->
+    <link rel="stylesheet" href="./src/libraries/fontawesome/css/all.min.css" />
+    <script src="./src/libraries/fontawesome/js/all.min.js"></script>
+    <!-- global css -->
+    <link rel="stylesheet" href="./src/css/dashboard-global.css" />
+    <!-- dashboard page css -->
+    <link rel="stylesheet" href="./src/css/dashboard-categories.css" />
+    <link rel="icon" type="image/x-icon" href="/src/img/logo.ico" />
+
+    <!-- apex charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <div class="dashboard-container flex flex-row w-[100vw]">
+      <div class="navigation hidden xl:flex-2 xl:block">
+        <div class="logo-container">
+          <a
+            href="/dashboard.html"
+            class="logo flex justify-start items-center gap-2"
+          >
+            <img
+              src="./src/img/logo-gradient.svg"
+              alt="portfolio logo"
+              class="w-14"
+            />
+            <span class="font-bold text-lg">بنتوفولیو</span>
+          </a>
+        </div>
+        <nav class="menu flex flex-col gap-2">
+          <span class="seperator text-sm">ناوبری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard.html"
+          >
+            <i class="fa-solid fa-grid-2 fa-xl"></i>
+            داشبورد
+          </a>
+          <span class="seperator text-sm">بلاگ</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-add-post.html"
+          >
+            <i class="fa-solid fa-pencil fa-xl"></i>
+            ایجاد پست جدید
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-posts.html"
+          >
+            <i class="fa-solid fa-newspaper fa-xl"></i>
+            مشاهده پست ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-categories.html"
+          >
+            <i class="fa-solid fa-layer-group fa-xl"></i>
+            دسته بندی ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-comments.html"
+          >
+            <i class="fa-solid fa-comments fa-xl"></i>
+            نظرات
+          </a>
+          <span class="seperator text-sm">تنظیمات صفحات</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-memo fa-xl"></i>
+            ویرایش صفحه اصلی
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-briefcase fa-xl"></i>
+            نمونه کار ها
+          </a>
+          <span class="seperator text-sm">کاربران</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-users.html"
+          >
+            <i class="fa-solid fa-users fa-xl"></i>
+            مدیریت کاربران
+          </a>
+
+          <span class="seperator text-sm">حساب کاربری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-account-settings.html"
+          >
+            <i class="fa-solid fa-gears fa-xl"></i>
+            تنظیمات حساب
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-login.html"
+          >
+            <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+            خروج
+          </a>
+        </nav>
+      </div>
+      <div class="dashboard flex-10">
+        <div class="top-bar flex flex-row items-center justify-between">
+          <div class="flex flex-row justify-between items-center gap-4">
+            <a class="side-bar block xl:hidden" href="#">
+              <i
+                class="icon fa-solid fa-bars-sort fa-flip-horizontal fa-lg"
+              ></i>
+            </a>
+            <a class="search" href="#">
+              <i class="icon fa-solid fa-magnifying-glass fa-lg"></i>
+            </a>
+          </div>
+          <div class="flex flex-row gap-5 items-center">
+            <a class="hidden xl:block" href="./dashboard-account-settings.html">
+              <i class="icon fa-solid fa-gear fa-lg"></i>
+            </a>
+            <div
+              class="admin-info flex flex-row justify-between items-center gap-2"
+            >
+              <img
+                class="admin-pic"
+                src="./src/img/Profile Picture.jpg"
+                alt=""
+              />
+
+              <div class="info flex flex-col gap-1">
+                <span class="role text-xs">مدیر سایت</span>
+                <span class="username font-semibold text-xs">برهان مرتضوی</span>
+              </div>
+              <div class="info-hover-content">
+                <div class="flex flex-col gap-2 p-1">
+                  <!-- Content to show on hover -->
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./index.html"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    مشاهده سایت
+                  </a>
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./dashboard-account-settings.html"
+                  >
+                    <i class="fa-solid fa-gears"></i>
+                    تنظیمات
+                  </a>
+                  <a
+                    class="menu-item flex flex-row gap-3 items-center justify-start text-xs"
+                    href="./dashboard-login.html"
+                  >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    خروج
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-content-container w-full">
+          <!-- main content here -->
+          <div class="grid w-[100%]">
+            <h2 class="text-lg font-semibold">افزودن دسته بندی</h2>
+                        <form class="mx-auto w-full mb-8">
+                            <div class="flex flex-row gap-4 items-center w-full">
+                                                                                        <div class="mb-5 flex-6">
+                <label
+                  for="title"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >عنوان دسته‌بندی</label
+                >
+                <input
+                  type="text"
+                  id="title"
+                  placeholder = "عنوان دسته‌بندی"
+                  class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+                  required
+                />
+              </div>
+                            <div class="mb-5 flex-1">
+                   <label for="hs-color-input" class="block text-sm font-medium mb-2 dark:text-white">رنگ دسته بندی</label>
+<input type="color" class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" id="hs-color-input" value="#2563eb" title="Choose your color">
+              
+              </div>
+                            </div>
+                           
+            
+              <div class="mb-5 flex-2">
+                <label for="summary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">توضیحات</label>
+  <textarea id="summary" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="توضیحات دسته بندی"></textarea>
+
+              </div>
+
+      
+           <button
+                type="cancel"
+                class="cursor-pointer text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800"
+              >
+                لغو
+              </button>
+                            <button
+                type="submit"
+                class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                افزودن
+              </button>
+            </form>
+            <h2 class="text-lg font-semibold">دسته بندی ها</h2>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <div
+                class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4"
+              >
+                <div>
+                  <button
+                    id="dropdownActionButton"
+                    data-dropdown-toggle="dropdownAction"
+                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    type="button"
+                  >
+                    <span class="sr-only">عملیات</span>
+                    عملیات
+                    <svg
+                      class="w-2.5 h-2.5 ms-2.5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAction"
+                    class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:divide-gray-600"
+                  >
+                    <ul
+                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownActionButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >ترفیغ</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >حذف</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >غیرفعال سازی</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="py-1">
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >ویرایش</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <label for="table-search" class="sr-only">جستجو</label>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
+                  >
+                    <svg
+                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    id="table-search-users"
+                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="جستجو"
+                  />
+                </div>
+              </div>
+              <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-all-search"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-all-search" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">عنوان دسته بندی</th>
+                    <th scope="col" class="px-6 py-3">توسط</th>
+                    <th scope="col" class="px-6 py-3">توضیحات</th>
+                    <th scope="col" class="px-6 py-3">تاریخ</th>
+                    <th scope="col" class="px-6 py-3">عملیات</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                    <th class="px-6 py-4 text-green-500">Javascript</th>
+                    <td class="px-6 py-4">borhawn</td>
+                    <td class="px-6 py-4">
+امنیت اطلاعات یکی از مهم‌ترین بخش‌های توسعه‌ی نرم‌افزارهای مدرن است، به‌ویژه زمانی که صحبت از ذخیره‌سازی رمزهای عبور کاربران در میان باشد. ذخیره‌ی رمزهای عبور به‌صورت ساده (plain text) می‌تواند فاجعه‌بار باشد
+                    </td>
+                    <td class="px-6 py-4">23 خرداد 1404</td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="flex flex-row items-center justify-around gap-2"
+                      >
+                        <a
+                          href="#"
+                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
+                          >ویرایش</a
+                        >
+                        <a
+                          href="#"
+                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
+                          >حذف</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                                    <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                    <th class="px-6 py-4 text-yellow-500">HTML</th>
+                    <td class="px-6 py-4">borhawn</td>
+                    <td class="px-6 py-4">
+یکی از راهکارهای ایمن‌سازی رمزهای عبور، استفاده از الگوریتم‌های هشینگ رمزنگاری‌شده است.                    </td>
+                    <td class="px-6 py-4">5 فروردین 1402</td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="flex flex-row items-center justify-around gap-2"
+                      >
+                        <a
+                          href="#"
+                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
+                          >ویرایش</a
+                        >
+                        <a
+                          href="#"
+                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
+                          >حذف</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                                    <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                    <th class="px-6 py-4 text-orange-500">Next Js</th>
+                    <td class="px-6 py-4">borhawn</td>
+                    <td class="px-6 py-4">
+با توجه به امنیت بالا و سادگی استفاده، توصیه می‌شود در همه‌ی پروژه‌هایی که نیاز به احراز هویت دارند، از آن استفاده شود.                     </td>
+                    <td class="px-6 py-4">11 اسفند 1403</td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="flex flex-row items-center justify-around gap-2"
+                      >
+                        <a
+                          href="#"
+                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
+                          >ویرایش</a
+                        >
+                        <a
+                          href="#"
+                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
+                          >حذف</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                                    <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                    <th class="px-6 py-4 text-blue-500">Css</th>
+                    <td class="px-6 py-4">borhawn</td>
+                    <td class="px-6 py-4">
+جاوااسکریپت یکی از محبوب‌ترین زبان‌های برنامه‌نویسی برای توسعه وب است که در سمت کلاینت و سرور استفاده می‌شود.                    </td>
+                    <td class="px-6 py-4">3 مهر 1403</td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="flex flex-row items-center justify-around gap-2"
+                      >
+                        <a
+                          href="#"
+                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
+                          >ویرایش</a
+                        >
+                        <a
+                          href="#"
+                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
+                          >حذف</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                                    <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  >
+                    <td class="w-4 p-4">
+                      <div class="flex items-center">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label for="checkbox-table-search-1" class="sr-only"
+                          >checkbox</label
+                        >
+                      </div>
+                    </td>
+                    <th class="px-6 py-4 text-red-500">Linux</th>
+                    <td class="px-6 py-4">borhawn</td>
+                    <td class="px-6 py-4">
+امنیت اطلاعات یکی از مهم‌ترین بخش‌های توسعه‌ی نرم‌افزارهای مدرن است، به‌ویژه زمانی که صحبت از ذخیره‌سازی رمزهای عبور کاربران در میان باشد. ذخیره‌ی رمزهای عبور به‌صورت ساده (plain text) می‌تواند فاجعه‌بار باشد
+                    </td>
+                    <td class="px-6 py-4">15 خرداد 1403</td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="flex flex-row items-center justify-around gap-2"
+                      >
+                        <a
+                          href="#"
+                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
+                          >ویرایش</a
+                        >
+                        <a
+                          href="#"
+                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
+                          >حذف</a
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav class="pagination-container rounded-full px-4 py-3">
+              <ul class="flex gap-2 font-medium py-2">
+                <li>
+                  <a
+                    href="#"
+                    class="selected-page bg-gray-900 rounded-full px-4 py-2"
+                    >1</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
+                    >2</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
+                    >3</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
+                    >4</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
+                    >5</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="search-overlay" class="search-overlay hidden">
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="جستجو..."
+        autofocus
+      />
+    </div>
+
+    <!-- Sidebar container -->
+    <div id="sidebar" class="sidebar-container">
+      <!-- Sidebar content can be added here -->
+      <div class="sidebar-content">
+        <!-- side-bar menu content -->
+        <div class="logo-container">
+          <a
+            href="/dashboard.html"
+            class="logo flex justify-start items-center gap-2"
+          >
+            <img
+              src="./src/img/logo-gradient.svg"
+              alt="portfolio logo"
+              class="w-14"
+            />
+            <span class="font-bold text-lg">بنتوفولیو</span>
+          </a>
+        </div>
+        <nav class="menu flex flex-col gap-2">
+          <span class="seperator text-sm">ناوبری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard.html"
+          >
+            <i class="fa-solid fa-grid-2 fa-xl"></i>
+            داشبورد
+          </a>
+          <span class="seperator text-sm">بلاگ</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-add-post.html"
+          >
+            <i class="fa-solid fa-pencil fa-xl"></i>
+            ایجاد پست جدید
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-posts.html"
+          >
+            <i class="fa-solid fa-newspaper fa-xl"></i>
+            مشاهده پست ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-categories.html"
+          >
+            <i class="fa-solid fa-layer-group fa-xl"></i>
+            دسته بندی ها
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-comments.html"
+          >
+            <i class="fa-solid fa-comments fa-xl"></i>
+            نظرات
+          </a>
+          <span class="seperator text-sm">تنظیمات صفحات</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-memo fa-xl"></i>
+            ویرایش صفحه اصلی
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-page-settings.html"
+          >
+            <i class="fa-solid fa-briefcase fa-xl"></i>
+            نمونه کار ها
+          </a>
+          <span class="seperator text-sm">کاربران</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-users.html"
+          >
+            <i class="fa-solid fa-users fa-xl"></i>
+            مدیریت کاربران
+          </a>
+
+          <span class="seperator text-sm">حساب کاربری</span>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-account-settings.html"
+          >
+            <i class="fa-solid fa-gears fa-xl"></i>
+            تنظیمات حساب
+          </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="./dashboard-login.html"
+          >
+            <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+            خروج
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <script src="./src/js/overlay.js"></script>
+  </body>
+</html>

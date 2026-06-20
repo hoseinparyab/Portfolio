@@ -1,0 +1,254 @@
+.bento-container {
+  display: grid;
+  grid-gap: 1em;
+}
+
+
+header{
+    grid-area: z;
+}
+
+.post-info{
+    grid-area: a;
+}
+
+.side-bar{
+  grid-area: b;
+}
+
+.comments-section{
+  grid-area: c;
+}
+
+.breadcrumbs{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+
+}
+
+.breadcrumbs > a , .breadcrumbs > span{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.breadcrumbs > a:hover{
+  transition: color 0.3s;
+  color: var(--linkhover-color);
+}
+
+.featured-image{
+  width: 100%;
+}
+
+.post-info img{
+  border-radius: 16px;
+}
+
+.general-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-tags{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4px;
+}
+
+a.tags{
+    transition: color 0.3s;
+}
+
+a.tags:hover{
+  color: var(--linkhover-color);
+  transition: color 0.3s;
+}
+.post-content * {
+    line-height: 2.4em;
+    text-align: justify;
+}
+.paragraph{
+  line-height: 2.4em;
+}
+.comment-2{
+  padding-right: 35px;
+}
+.comment-form input, .comment-form textarea{
+  background-color: var(--square-color);
+  border: solid 1px var(--bentoborder-color);
+}
+
+.sticky-element{
+  position: sticky;
+  top: 0px;
+}
+
+
+.post-content pre, .post-content code {
+  width: 100%;
+  border-radius: 16px;
+  direction: ltr;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+
+.post-content ul{
+  list-style-type: circle;
+}
+.bento-boxes {
+  min-height: 0; /* NEW */
+  min-width: 0; /* NEW; needed for Firefox */
+
+}
+h1{
+  font-weight: 600;
+}
+h2{
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+h3{
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+h4{
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+h5{
+  font-weight: 600;
+  font-size: 1rem;
+}
+h6{
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+/* Responsive Design for Grids */
+@media (max-width: 639px) {
+  .bento-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template:
+      "z z z z z"
+      "a a a a a"
+      "c c c c c"
+      "b b b b b";
+  }
+}
+
+hr{
+color: var(--bentoborder-color);
+}
+
+.inner-section{
+  width: 100%;
+}
+
+.inner-section img{
+  border-radius: 16px;
+  width: 100%;
+}
+.inner-section .category{
+  background-color: var(--square-color);
+  border-radius: 1em;
+  backdrop-filter: blur(3px);
+   padding: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.inner-section .category:hover{
+  background-color: var(--square-hover-color);
+transition: 0.3s;
+}
+.pic{
+  width: 100%;
+  height: 100%;
+}
+.profile-picture{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.reply , .name{
+  color: var(--linkhover-color);
+}
+.comment-info{
+  width: 100%;
+  margin-top: 10px;
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .bento-container {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template:
+      "z z z z z z"
+      "a a a a a a"
+      "c c c c c c"
+      "b b b b b b";
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-container {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template:
+      "z z z z z z z z"
+      "a a a a a a a a"
+      "c c c c c c c c"
+      "b b b b b b b b";
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .bento-container {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template:
+      "z z z z z z z z z z z"
+      "a a a a a a a a a a a"
+      "c c c c c c c c c c c"
+      "b b b b b b b b b b b";
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+
+  .profile-pic{
+  width: 150px;
+  height: 150px;
+}
+  .bento-container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template:
+      "z z z z z z z z z z z z"
+      "a a a a a a a a a a b b"
+      "c c c c c c c c c c b b";
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .bento-container {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template:
+      "z z z z z z z z"
+      "a a a a a a b b"
+      "c c c c c c b b"
+;
+  }
+}

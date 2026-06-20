@@ -1,0 +1,7 @@
+.dashboard-content-container {
+  grid-template:
+    "a";
+}
+.grid{
+    grid-area: a;
+}
