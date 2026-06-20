@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Panel\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => view('Frontend.pages.home'))->name('home');
@@ -19,10 +20,13 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
         Route::get('/posts/create', fn() => view('Frontend.dashboard.add-post'))->name('posts.create');
         Route::get('/posts', fn() => view('Frontend.dashboard.posts'))->name('posts.index');
-        Route::get('/categories', fn() => view('Frontend.dashboard.categories'))->name('categories');
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
         Route::get('/comments', fn() => view('Frontend.dashboard.comments'))->name('comments');
         Route::get('/page-settings', fn() => view('Frontend.dashboard.page-settings'))->name('page-settings');
         Route::get('/users', fn() => view('Frontend.dashboard.users'))->name('users');

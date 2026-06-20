@@ -6,408 +6,134 @@
     @vite(['resources/js/frontend/dashboard.js', 'resources/js/frontend/dashboard-categories.js'])
 @endsection
 
-
 @section('content')
-<div class="grid w-[100%]">
-            <h2 class="text-lg font-semibold">افزودن دسته بندی</h2>
-                        <form class="mx-auto w-full mb-8">
-                            <div class="flex flex-row gap-4 items-center w-full">
-                                                                                        <div class="mb-5 flex-6">
-                <label
-                  for="title"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >عنوان دسته‌بندی</label
-                >
-                <input
-                  type="text"
-                  id="title"
-                  placeholder = "عنوان دسته‌بندی"
-                  class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
-                  required
-                />
-              </div>
-                            <div class="mb-5 flex-1">
-                   <label for="hs-color-input" class="block text-sm font-medium mb-2 dark:text-white">رنگ دسته بندی</label>
-<input type="color" class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700" id="hs-color-input" value="#2563eb" title="Choose your color">
-              
-              </div>
-                            </div>
-                           
-            
-              <div class="mb-5 flex-2">
-                <label for="summary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">توضیحات</label>
-  <textarea id="summary" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="توضیحات دسته بندی"></textarea>
+    <div class="grid w-[100%]">
 
-              </div>
+        @include('Frontend.partials.spacing')
 
-      
-           <button
-                type="cancel"
-                class="cursor-pointer text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800"
-              >
-                لغو
-              </button>
-                            <button
-                type="submit"
-                class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                افزودن
-              </button>
-            </form>
-            <h2 class="text-lg font-semibold">دسته بندی ها</h2>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <div
-                class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4"
-              >
-                <div>
-                  <button
-                    id="dropdownActionButton"
-                    data-dropdown-toggle="dropdownAction"
-                    class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                    type="button"
-                  >
-                    <span class="sr-only">عملیات</span>
-                    عملیات
-                    <svg
-                      class="w-2.5 h-2.5 ms-2.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 1 4 4 4-4"
-                      />
-                    </svg>
-                  </button>
-                  <!-- Dropdown menu -->
-                  <div
-                    id="dropdownAction"
-                    class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:divide-gray-600"
-                  >
-                    <ul
-                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownActionButton"
-                    >
-                      <li>
-                        <a
-                          href="#"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >ترفیغ</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >حذف</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >غیرفعال سازی</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="py-1">
-                      <a
-                        href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                        >ویرایش</a
-                      >
-                    </div>
-                  </div>
+        <h2 class="text-lg font-semibold mb-4">افزودن دسته‌بندی</h2>
+
+        <form action="{{ route('dashboard.categories.store') }}" method="POST" class="mx-auto w-full mb-8">
+            @csrf
+
+            <div class="flex flex-row gap-4 items-center w-full">
+                <div class="mb-5 w-full">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        عنوان دسته‌بندی
+                    </label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}"
+                        placeholder="نام دسته‌بندی"
+                        class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        required>
+                    @error('name')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
-                <label for="table-search" class="sr-only">جستجو</label>
-                <div class="relative">
-                  <div
-                    class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
-                  >
-                    <svg
-                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    type="text"
-                    id="table-search-users"
-                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="جستجو"
-                  />
+
+                <div class="mb-5">
+                    <label for="color" class="block text-sm font-medium mb-2 dark:text-white">
+                        رنگ دسته‌بندی
+                    </label>
+                    <input type="color" name="color" id="color" value="{{ old('color', '#2563eb') }}"
+                        class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg"
+                        title="Choose your color">
+                    @error('color')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
-              </div>
-              <table
-                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded overflow-hidden"
-              >
-                <thead
-                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-                >
-                  <tr>
-                    <th scope="col" class="p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-all-search"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-all-search" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </th>
-                    <th scope="col" class="px-6 py-3">عنوان دسته بندی</th>
-                    <th scope="col" class="px-6 py-3">توسط</th>
-                    <th scope="col" class="px-6 py-3">توضیحات</th>
-                    <th scope="col" class="px-6 py-3">تاریخ</th>
-                    <th scope="col" class="px-6 py-3">عملیات</th>
-                  </tr>
+            </div>
+
+            <div class="mb-5">
+                <label for="summary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    توضیحات
+                    <textarea name="summary" id="summary" rows="4"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="توضیحات دسته بندی">{{ old('summary') }}</textarea>
+                    @error('summary')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+            </div>
+
+            <div class="flex gap-2">
+                <button type="reset"
+                    class="cursor-pointer text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    لغو
+                </button>
+
+                <button type="submit"
+                    class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    افزودن
+                </button>
+            </div>
+        </form>
+
+        <h2 class="text-lg font-semibold mb-4">دسته‌بندی‌ها</h2>
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded overflow-hidden">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">عنوان دسته‌بندی</th>
+                        <th scope="col" class="px-6 py-3">رنگ</th>
+                        <th scope="col" class="px-6 py-3">توضیحات دسته بندی</th>
+                        <th scope="col" class="px-6 py-3">اسلاگ</th>
+                        <th scope="col" class="px-6 py-3">تاریخ</th>
+                        <th scope="col" class="px-6 py-3">عملیات</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                    <th class="px-6 py-4 text-green-500">Javascript</th>
-                    <td class="px-6 py-4">borhawn</td>
-                    <td class="px-6 py-4">
-امنیت اطلاعات یکی از مهم‌ترین بخش‌های توسعه‌ی نرم‌افزارهای مدرن است، به‌ویژه زمانی که صحبت از ذخیره‌سازی رمزهای عبور کاربران در میان باشد. ذخیره‌ی رمزهای عبور به‌صورت ساده (plain text) می‌تواند فاجعه‌بار باشد
-                    </td>
-                    <td class="px-6 py-4">23 خرداد 1404</td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="flex flex-row items-center justify-around gap-2"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
-                          >ویرایش</a
-                        >
-                        <a
-                          href="#"
-                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
-                          >حذف</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
-                                    <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                    <th class="px-6 py-4 text-yellow-500">HTML</th>
-                    <td class="px-6 py-4">borhawn</td>
-                    <td class="px-6 py-4">
-یکی از راهکارهای ایمن‌سازی رمزهای عبور، استفاده از الگوریتم‌های هشینگ رمزنگاری‌شده است.                    </td>
-                    <td class="px-6 py-4">5 فروردین 1402</td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="flex flex-row items-center justify-around gap-2"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
-                          >ویرایش</a
-                        >
-                        <a
-                          href="#"
-                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
-                          >حذف</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
-                                    <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                    <th class="px-6 py-4 text-orange-500">Next Js</th>
-                    <td class="px-6 py-4">borhawn</td>
-                    <td class="px-6 py-4">
-با توجه به امنیت بالا و سادگی استفاده، توصیه می‌شود در همه‌ی پروژه‌هایی که نیاز به احراز هویت دارند، از آن استفاده شود.                     </td>
-                    <td class="px-6 py-4">11 اسفند 1403</td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="flex flex-row items-center justify-around gap-2"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
-                          >ویرایش</a
-                        >
-                        <a
-                          href="#"
-                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
-                          >حذف</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
-                                    <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                    <th class="px-6 py-4 text-blue-500">Css</th>
-                    <td class="px-6 py-4">borhawn</td>
-                    <td class="px-6 py-4">
-جاوااسکریپت یکی از محبوب‌ترین زبان‌های برنامه‌نویسی برای توسعه وب است که در سمت کلاینت و سرور استفاده می‌شود.                    </td>
-                    <td class="px-6 py-4">3 مهر 1403</td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="flex flex-row items-center justify-around gap-2"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
-                          >ویرایش</a
-                        >
-                        <a
-                          href="#"
-                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
-                          >حذف</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
-                                    <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input
-                          id="checkbox-table-search-1"
-                          type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                        <label for="checkbox-table-search-1" class="sr-only"
-                          >checkbox</label
-                        >
-                      </div>
-                    </td>
-                    <th class="px-6 py-4 text-red-500">Linux</th>
-                    <td class="px-6 py-4">borhawn</td>
-                    <td class="px-6 py-4">
-امنیت اطلاعات یکی از مهم‌ترین بخش‌های توسعه‌ی نرم‌افزارهای مدرن است، به‌ویژه زمانی که صحبت از ذخیره‌سازی رمزهای عبور کاربران در میان باشد. ذخیره‌ی رمزهای عبور به‌صورت ساده (plain text) می‌تواند فاجعه‌بار باشد
-                    </td>
-                    <td class="px-6 py-4">15 خرداد 1403</td>
-                    <td class="px-6 py-4">
-                      <div
-                        class="flex flex-row items-center justify-around gap-2"
-                      >
-                        <a
-                          href="#"
-                          class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2"
-                          >ویرایش</a
-                        >
-                        <a
-                          href="#"
-                          class="font-medium text-red-600 dark:text-red-500 hover:underline mx-2 my-2"
-                          >حذف</a
-                        >
-                      </div>
-                    </td>
-                  </tr>
+                    @forelse($categories as $category)
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                {{ $category->name }}
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-block w-5 h-5 rounded-full border"
+                                        style="background-color: {{ $category->color }};"></span>
+                                    <span>{{ $category->color }}</span>
+                                </div>
+                            </td>
+
+                            <td class="px-6 py-4">
+                                {{ $category->description }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $category->slug }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $category->created_at ? $category->created_at->format('Y/m/d') : '-' }}
+                            </td>
+
+                            <td class="px-6 py-4">
+                                <div class="flex flex-row items-center justify-around gap-2">
+                                    <a href="{{ route('dashboard.categories.edit', $category->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2">
+                                        ویرایش
+                                    </a>
+                                    <form action="{{ route('dashboard.categories.destroy', $category->id) }}" method="POST"
+                                        onsubmit="return confirm('از حذف این دسته بندی مطمئن هستید؟')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit " class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                            حذف
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                                هنوز هیچ دسته‌بندی ثبت نشده است.
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
-              </table>
-            </div>
-            <nav class="pagination-container rounded-full px-4 py-3">
-              <ul class="flex gap-2 font-medium py-2">
-                <li>
-                  <a
-                    href="#"
-                    class="selected-page bg-gray-900 rounded-full px-4 py-2"
-                    >1</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
-                    >2</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
-                    >3</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
-                    >4</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="page rounded-full px-4 py-2 transition duration-300 ease-in-out"
-                    >5</a
-                  >
-                </li>
-              </ul>
-            </nav>
-          </div>
+            </table>
+        </div>
+
+    </div>
 @endsection

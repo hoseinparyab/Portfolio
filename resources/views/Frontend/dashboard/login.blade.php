@@ -8,23 +8,7 @@
         class="login w-full md:w-1/2 h-screen p-4 flex flex-col justify-center items-center"
       >
       <div id="login-section" class="login-section p-4 flex flex-col justify-center items-center gap-4">
-        @if (session('error'))
-            <div class="alert alert-danger text-red-600 text-sm">
-                {{ session('error') }}
-            </div>
-        @endif
-        @if (session('success'))
-            <div class="alert alert-success text-green-600 text-sm">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class="text-red-600 text-sm">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
+        @include('Frontend.partials.spacing')
         <h1 class="header font-bold text-2xl">ورود</h1>
         <div
           class="login-options flex flex-row gap-4 items-center justify-center my-2"
