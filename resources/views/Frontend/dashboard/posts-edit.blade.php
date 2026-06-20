@@ -11,8 +11,7 @@
 
         @include('Frontend.partials.spacing')
 
-    @include('Frontend.partials.spacing')
-    <div class="grid w-full bg-[#202D38] p-5 rounded-lg">
+        <div class="grid w-full bg-[#202D38] p-5 rounded-lg">
         <h1 class="text-lg font-semibold mb-4 text-white">ویرایش نوشته</h1>
 
         <form action="{{ route('dashboard.posts.update', $post->id) }}" method="POST" class="mx-auto w-full">
@@ -37,18 +36,24 @@
                 @enderror
             </div>
 
-            <div class="mb-5">
-                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <div class="mb-5 post-content">
+                <label for="editor" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     محتوای نوشته
                 </label>
-                <textarea
-                    name="content"
-                    id="content"
-                    rows="12"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="محتوای نوشته"
-                    required
-                >{{ old('content', $post->content) }}</textarea>
+                <div class="adjoined-bottom">
+                    <div class="grid-container">
+                        <div class="grid-width-100">
+                            <textarea
+                                name="content"
+                                id="editor"
+                                rows="12"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="محتوای نوشته"
+                                required
+                            >{{ old('content', $post->content) }}</textarea>
+                        </div>
+                    </div>
+                </div>
                 @error('content')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -132,7 +137,20 @@
                 </button>
             </div>
         </form>
+        </div>
     </div>
-    </div>
-</div>
 @endsection
+
+@push('scripts')
+    <script>
+        window.CKEDITOR_BASEPATH = @json(rtrim(asset('src/libraries/ckeditor'), '/') . '/');
+    </script>
+    <script src="{{ asset('src/libraries/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor', {
+            height: 300,
+            language: 'fa',
+            contentsLangDirection: 'rtl',
+        });
+    </script>
+@endpush
