@@ -104,7 +104,7 @@
                                 {{ $category->slug }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $category->created_at ? $category->created_at->format('Y/m/d') : '-' }}
+                                {{ $category->created_at }}
                             </td>
 
                             <td class="px-6 py-4">

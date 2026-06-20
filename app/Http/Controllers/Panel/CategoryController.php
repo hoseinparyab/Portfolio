@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Panel\StoreCategoryRequest;
+use App\Http\Requests\Panel\UpdateCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,16 +15,10 @@ class CategoryController extends Controller
         return view('Frontend.dashboard.categories', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $categoryRequest)
     {
 
-        $validated = $request->validate([
-            'name'        => 'required|string|max:255',
-            'color'       => 'nullable|string|max:20',
-            'description' => 'nullable|string',
-        ]);
-
-        Category::create($validated);
+        Category::create($categoryRequest->validated());
 
         return redirect()->back()->with('success', 'دسته بندی با موفقیت ایجاد شد');
     }
@@ -34,19 +29,13 @@ class CategoryController extends Controller
         return view('Frontend.dashboard.categories-edit', compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $categoryRequest, $id)
     {
         $category = Category::findOrFail($id);
 
-        $validated = $request->validate([
-            'name'        => 'required|string|max:255',
-            'color'       => 'nullable|string|max:20',
-            'description' => 'nullable|string',
-        ]);
+        $category->update($categoryRequest->validated());
 
-        $category->update($validated);
-
-        return redirect()->back()->with('success', 'دسته بندی با موفقیت ویرایش شد');
+        return redirect()->route('dashboard.categories')->with('success', 'دسته بندی با موفقیت ویرایش شد');
     }
 
     public function destroy($id)
