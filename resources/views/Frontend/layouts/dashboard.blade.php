@@ -30,5 +30,7 @@
     </div>
 
     @include('Frontend.partials.dashboard-overlays')
+
+    @stack('scripts')
   </body>
 </html>

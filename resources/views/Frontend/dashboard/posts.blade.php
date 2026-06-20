@@ -105,9 +105,8 @@
                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                             </div>
                         </th>
-                        <th scope="col" class="px-8 py-3 w-[34%]">عنوان</th>
-                        <th scope="col" class="px-8 py-3 w-[34%]">اسلاگ</th>
-                        <th scope="col" class="px-8 py-3 w-44 whitespace-nowrap">تاریخ آخرین ویرایش</th>
+                        <th scope="col" class="px-8 py-3 w-[18%]">عنوان</th>
+                        <th scope="col" class="px-8 py-3 w-[18%] whitespace-nowrap">تاریخ آخرین ویرایش</th>
                         <th scope="col" class="px-8 py-3 w-[18%]">دسته بندی</th>
                         <th scope="col" class="px-8 py-3 w-[18%]">توسط</th>
                         <th scope="col" class="px-8 py-3 w-40 text-center">عملیات</th>

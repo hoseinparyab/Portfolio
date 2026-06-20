@@ -30,20 +30,26 @@
 
               <div class="mb-5 post-content">
                 <label
-                  for="title"
+                  for="editor"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >محتوای نوشته</label
                 >
-                	<div class="adjoined-bottom">
-		<div class="grid-container">
-			<div class="grid-width-100">
-				<div id="editor">
-					<h1>Hello world!</h1>
-					<p>I'm an instance of <a href="https://ckeditor.com">CKEditor</a>.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="adjoined-bottom">
+                  <div class="grid-container">
+                    <div class="grid-width-100">
+                      <textarea
+                        name="content"
+                        id="editor"
+                        rows="10"
+                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="محتوای نوشته را اینجا بنویسید..."
+                      >{{ old('content') }}</textarea>
+                    </div>
+                  </div>
+                </div>
+                @error('content')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
               </div>
 
               <div class="flex flex-col mb-5 lg:flex-row gap-4 justify-stretch items-top">
@@ -171,3 +177,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        window.CKEDITOR_BASEPATH = @json(rtrim(asset('src/libraries/ckeditor'), '/') . '/');
+    </script>
+    <script src="{{ asset('src/libraries/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('editor', {
+            height: 300,
+            language: 'fa',
+            contentsLangDirection: 'rtl',
+        });
+    </script>
+@endpush
