@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Panel;
+namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;

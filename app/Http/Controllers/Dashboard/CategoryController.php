@@ -1,9 +1,9 @@
 <?php
-namespace App\Http\Controllers\Panel;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Panel\StoreCategoryRequest;
-use App\Http\Requests\Panel\UpdateCategoryRequest;
+use App\Http\Requests\Dashboard\StoreCategoryRequest;
+use App\Http\Requests\Dashboard\UpdateCategoryRequest;
 use App\Models\Category;
 
 class CategoryController extends Controller
