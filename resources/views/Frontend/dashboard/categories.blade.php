@@ -55,10 +55,10 @@
             </div>
 
             <div class="flex gap-2">
-                <button type="reset"
+                <a type="reset" a href="{{ route('dashboard.categories') }}"
                     class="cursor-pointer text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     لغو
-                </button>
+                </a>
 
                 <button type="submit"
                     class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
@@ -103,21 +103,21 @@
                             <td class="px-6 py-4">
                                 {{ $category->slug }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ $category->created_at }}
+                                <td class="px-6 py-4">
+                                {{ verta($category->created_at)->format('Y/m/d') }}
                             </td>
 
                             <td class="px-6 py-4">
                                 <div class="flex flex-row items-center justify-around gap-2">
                                     <a href="{{ route('dashboard.categories.edit', $category->id) }}"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2 my-2">
+                                        class="font-medium text-blue-400 cursor-pointer">
                                         ویرایش
                                     </a>
                                     <form action="{{ route('dashboard.categories.destroy', $category->id) }}" method="POST"
                                         onsubmit="return confirm('از حذف این دسته بندی مطمئن هستید؟')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit " class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                        <button type="submit " class="font-medium text-red-600 cursor-pointer">
                                             حذف
                                         </button>
                                     </form>

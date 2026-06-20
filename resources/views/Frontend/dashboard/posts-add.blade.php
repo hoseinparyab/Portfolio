@@ -9,7 +9,9 @@
 
 @section('content')
 <div class="grid w-[100%]">
-            <h1 class="text-lg font-semibold">نوشته جدید / ویرایش نوشته</h1>
+    @include('Frontend.partials.spacing')
+    <div class="grid w-full bg-[#202D38] p-5 rounded-lg">
+        <h1 class="text-lg font-semibold mb-4 text-white">نوشته جدید / ویرایش نوشته</h1>
             <form class="mx-auto w-full">
               <div class="mb-5">
                 <label
@@ -59,7 +61,7 @@
                   placeholder="خلاصه این نوشته"
                 ></textarea>
               </div></div>
-                <div class="2 flex-1">              
+                <div class="2 flex-1">
                   <div
                 class="flex flex-row items-center justify-between gap-8 mb-2"
               >
@@ -166,4 +168,6 @@
               </button>
             </form>
           </div>
+    </div>
+</div>
 @endsection
