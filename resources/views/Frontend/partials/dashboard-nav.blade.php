@@ -47,7 +47,8 @@
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
             href="{{ route('dashboard.page-settings.social-links') }}"
           >
-            <i class="fa-solid fa-briefcase fa-xl"></i>
+            <i class="fa-solid fa-share-nodes fa-xl"></i>
+
             لینک‌های اجتماعی
           </a>
           <a
@@ -57,6 +58,15 @@
             <i class="fa-solid fa-code fa-xl"></i>
             مهارت‌های نرم‌افزاری
           </a>
+
+           <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="{{ route('dashboard.page-settings.experiences') }}"
+          >
+            <i class="fa-solid fa-briefcase fa-xl"></i>
+            تجربه‌ها
+          </a>
+
           <span class="seperator text-sm">کاربران</span>
           <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"

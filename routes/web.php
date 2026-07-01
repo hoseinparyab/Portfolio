@@ -58,6 +58,7 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/page-settings/educations/{education}/edit', [PageSettingsController::class, 'educationsEdit'])->name('page-settings.educations.edit');
         Route::put('/page-settings/educations/{education}', [PageSettingsController::class, 'educationsUpdate'])->name('page-settings.educations.update');
         Route::delete('/page-settings/educations/{education}', [PageSettingsController::class, 'educationsDestroy'])->name('page-settings.educations.destroy');
+        Route::get('/page-settings/experiences', [PageSettingsController::class, 'experiencesIndex'])->name('page-settings.experiences');
         Route::post('/page-settings/experiences', [PageSettingsController::class, 'experiencesStore'])->name('page-settings.experiences.store');
         Route::get('/page-settings/experiences/{experience}/edit', [PageSettingsController::class, 'experiencesEdit'])->name('page-settings.experiences.edit');
         Route::put('/page-settings/experiences/{experience}', [PageSettingsController::class, 'experiencesUpdate'])->name('page-settings.experiences.update');

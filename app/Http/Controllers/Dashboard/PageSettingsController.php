@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Language;
 use App\Models\Setting;
 use App\Models\Skill;
@@ -95,6 +96,70 @@ class PageSettingsController extends Controller
         $education->delete();
 
         return redirect()->route('dashboard.page-settings')->with('success', 'سابقه تحصیلی با موفقیت حذف شد');
+    }
+
+    public function experiencesIndex(): View
+    {
+        $experiences = Experience::query()->latest()->get();
+
+        return view('Frontend.dashboard.experiences', compact('experiences'));
+    }
+
+    public function experiencesStore(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title'       => ['required', 'string', 'max:255'],
+            'company'     => ['required', 'string', 'max:255'],
+            'from'        => ['required', 'string', 'max:255'],
+            'till'        => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:5000'],
+        ]);
+
+        Experience::query()->create([
+            'title'        => $validated['title'],
+            'company'      => $validated['company'],
+            'started_from' => $validated['from'],
+            'ended_till'   => $validated['till'],
+            'description'  => $validated['description'] ?? null,
+        ]);
+
+        return redirect()->route('dashboard.page-settings.experiences', status: 303)
+            ->with('success', 'تجربه با موفقیت افزوده شد');
+    }
+
+    public function experiencesEdit(Experience $experience): View
+    {
+        return view('Frontend.dashboard.page-settings-experience-edit', compact('experience'));
+    }
+
+    public function experiencesUpdate(Request $request, Experience $experience): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title'       => ['required', 'string', 'max:255'],
+            'company'     => ['required', 'string', 'max:255'],
+            'from'        => ['required', 'string', 'max:255'],
+            'till'        => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:5000'],
+        ]);
+
+        $experience->update([
+            'title'        => $validated['title'],
+            'company'      => $validated['company'],
+            'started_from' => $validated['from'],
+            'ended_till'   => $validated['till'],
+            'description'  => $validated['description'] ?? null,
+        ]);
+
+        return redirect()->route('dashboard.page-settings.experiences')
+            ->with('success', 'تجربه با موفقیت ویرایش شد');
+    }
+
+    public function experiencesDestroy(Experience $experience): RedirectResponse
+    {
+        $experience->delete();
+
+        return redirect()->route('dashboard.page-settings.experiences')
+            ->with('success', 'تجربه با موفقیت حذف شد');
     }
 
     public function languagesStore(Request $request): RedirectResponse
