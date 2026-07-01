@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\CommentsController;
 use App\Http\Controllers\Dashboard\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,10 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
         Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-        Route::get('/comments', fn() => view('Frontend.dashboard.comments'))->name('comments');
+        Route::get('/comments', [CommentsController::class, 'index'])->name('comments');
+        Route::patch('/comments/{comment}/approve', [CommentsController::class, 'approve'])->name('comments.approve');
+        Route::patch('/comments/{comment}/spam', [CommentsController::class, 'spam'])->name('comments.spam');
+        Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
         Route::get('/page-settings', fn() => view('Frontend.dashboard.page-settings'))->name('page-settings');
         Route::get('/users', fn() => view('Frontend.dashboard.users'))->name('users');
         Route::get('/account-settings', fn() => view('Frontend.dashboard.account-settings'))->name('account-settings');
