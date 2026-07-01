@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CommentsController;
 use App\Http\Controllers\Dashboard\PageSettingsController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Frontend
@@ -44,7 +45,10 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::patch('/comments/{comment}/spam', [CommentsController::class, 'spam'])->name('comments.spam');
         Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
         Route::get('/page-settings', [PageSettingsController::class, 'index'])->name('page-settings');
-        Route::get('/users', fn() => view('Frontend.dashboard.users'))->name('users');
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         //Page Settings
         Route::get('/account-settings', fn() => view('Frontend.dashboard.account-settings'))->name('account-settings');
         Route::get('/page-settings/intro', [PageSettingsController::class, 'intro'])->name('page-settings.intro');

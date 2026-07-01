@@ -82,7 +82,7 @@
           <span class="seperator text-sm">کاربران</span>
           <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
-            href="{{ route('dashboard.users') }}"
+            href="{{ route('dashboard.users.index') }}"
           >
             <i class="fa-solid fa-users fa-xl"></i>
             مدیریت کاربران
@@ -172,7 +172,7 @@
           <span class="seperator text-sm">کاربران</span>
           <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
-            href="{{ route('dashboard.users') }}"
+            href="{{ route('dashboard.users.index') }}"
           >
             <i class="fa-solid fa-users fa-xl"></i>
             مدیریت کاربران
