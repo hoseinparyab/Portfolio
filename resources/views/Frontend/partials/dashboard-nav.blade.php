@@ -32,8 +32,7 @@
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
             href="{{ route('dashboard.comments') }}"
           >
-            <i class="fa-solid fa-comments fa-xl" data-tooltip-id="my-tooltip" data-tooltip-content="نظرات"
-            href="{{ route('dashboard.comments') }}"></i>
+            <i class="fa-solid fa-comments fa-xl" data-tooltip-id="my-tooltip" data-tooltip-content="نظرات"></i>
             نظرات
           </a>
           <span class="seperator text-sm">تنظیمات صفحات</span>

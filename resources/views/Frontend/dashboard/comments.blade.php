@@ -98,14 +98,14 @@
                             <td class="px-6 py-4 text-gray-900 dark:text-white whitespace-nowrap">
                                 <div class="flex items-center gap-3">
                                     <img class="w-10 h-10 rounded-full object-cover"
-                                        src="{{ $comment->user->avatar ?? asset('src/img/Profile Picture.jpg') }}"
-                                        alt="{{ $comment->user->name ?? $comment->name }}">
+                                        src="{{ $comment->user?->avatar ?? asset('src/img/Profile Picture.jpg') }}"
+                                        alt="{{ $comment->user?->name ?? $comment->name }}">
                                     <div>
                                         <div class="text-base font-normal">
-                                            {{ $comment->user->name ?? $comment->name ?? 'کاربر ناشناس' }}
+                                            {{ $comment->user?->name ?? $comment->name ?? 'کاربر ناشناس' }}
                                         </div>
                                         <div class="font-normal text-gray-500 text-xs">
-                                            {{ $comment->user->email ?? $comment->email ?? '-' }}
+                                            {{ $comment->user?->email ?? $comment->email ?? '-' }}
                                         </div>
                                     </div>
                                 </div>
