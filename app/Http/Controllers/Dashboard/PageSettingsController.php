@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Education;
 use App\Models\Language;
 use App\Models\Setting;
+use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -130,6 +131,64 @@ class PageSettingsController extends Controller
         $language->delete();
 
         return redirect()->route('dashboard.page-settings')->with('success', 'زبان با موفقیت حذف شد');
+    }
+
+    public function skillsIndex(): View
+    {
+        $skills = Skill::query()->latest()->get();
+
+        return view('Frontend.dashboard.skills', compact('skills'));
+    }
+
+    public function skillsStore(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'icon'  => ['required', 'file', 'mimes:png,jpg,jpeg,svg,webp', 'max:2048'],
+        ]);
+
+        $path = $request->file('icon')->store('skill-icons', 'public');
+
+        Skill::query()->create([
+            'title' => $validated['title'],
+            'icon'  => 'storage/' . $path,
+        ]);
+
+        return redirect()->route('dashboard.page-settings.skills', status: 303)
+            ->with('success', 'مهارت با موفقیت افزوده شد');
+    }
+
+    public function skillsEdit(Skill $skill): View
+    {
+        return view('Frontend.dashboard.page-settings-skill-edit', compact('skill'));
+    }
+
+    public function skillsUpdate(Request $request, Skill $skill): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'icon'  => ['nullable', 'file', 'mimes:png,jpg,jpeg,svg,webp', 'max:2048'],
+        ]);
+
+        $data = ['title' => $validated['title']];
+
+        if ($request->hasFile('icon')) {
+            $path = $request->file('icon')->store('skill-icons', 'public');
+            $data['icon'] = 'storage/' . $path;
+        }
+
+        $skill->update($data);
+
+        return redirect()->route('dashboard.page-settings.skills')
+            ->with('success', 'مهارت با موفقیت ویرایش شد');
+    }
+
+    public function skillsDestroy(Skill $skill): RedirectResponse
+    {
+        $skill->delete();
+
+        return redirect()->route('dashboard.page-settings.skills')
+            ->with('success', 'مهارت با موفقیت حذف شد');
     }
 
     public function resumeUpdate(Request $request): RedirectResponse

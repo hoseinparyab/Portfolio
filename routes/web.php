@@ -62,6 +62,7 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/page-settings/experiences/{experience}/edit', [PageSettingsController::class, 'experiencesEdit'])->name('page-settings.experiences.edit');
         Route::put('/page-settings/experiences/{experience}', [PageSettingsController::class, 'experiencesUpdate'])->name('page-settings.experiences.update');
         Route::delete('/page-settings/experiences/{experience}', [PageSettingsController::class, 'experiencesDestroy'])->name('page-settings.experiences.destroy');
+        Route::get('/page-settings/skills', [PageSettingsController::class, 'skillsIndex'])->name('page-settings.skills');
         Route::post('/page-settings/skills', [PageSettingsController::class, 'skillsStore'])->name('page-settings.skills.store');
         Route::get('/page-settings/skills/{skill}/edit', [PageSettingsController::class, 'skillsEdit'])->name('page-settings.skills.edit');
         Route::put('/page-settings/skills/{skill}', [PageSettingsController::class, 'skillsUpdate'])->name('page-settings.skills.update');

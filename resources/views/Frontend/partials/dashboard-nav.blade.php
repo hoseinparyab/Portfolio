@@ -50,6 +50,13 @@
             <i class="fa-solid fa-briefcase fa-xl"></i>
             لینک‌های اجتماعی
           </a>
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="{{ route('dashboard.page-settings.skills') }}"
+          >
+            <i class="fa-solid fa-code fa-xl"></i>
+            مهارت‌های نرم‌افزاری
+          </a>
           <span class="seperator text-sm">کاربران</span>
           <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
