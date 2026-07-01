@@ -156,6 +156,55 @@ class PageSettingsController extends Controller
         return redirect()->route('dashboard.page-settings')->with('success', 'مهارت‌های فردی با موفقیت به‌روزرسانی شد');
     }
 
+    public function socialLinksEdit(): View
+    {
+        $pageSetting = $this->settingsObject();
+
+        return view('Frontend.dashboard.social-links', compact('pageSetting'));
+    }
+
+    public function socialStore(Request $request): RedirectResponse
+    {
+        return $this->socialLinksUpdate($request);
+    }
+
+    public function socialLinksUpdate(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'github_url'    => ['nullable', 'url', 'max:255'],
+            'linkedin_url'  => ['nullable', 'url', 'max:255'],
+            'github_icon'   => ['nullable', 'image', 'max:2048'],
+            'linkedin_icon' => ['nullable', 'image', 'max:2048'],
+        ]);
+
+        foreach (['github_url', 'linkedin_url'] as $key) {
+            if (array_key_exists($key, $validated)) {
+                $this->saveSetting($key, $validated[$key]);
+            }
+        }
+
+        if ($request->hasFile('github_icon')) {
+            $path = $request->file('github_icon')->store('social-icons', 'public');
+            $this->saveSetting('github_icon', 'storage/' . $path);
+        }
+
+        if ($request->hasFile('linkedin_icon')) {
+            $path = $request->file('linkedin_icon')->store('social-icons', 'public');
+            $this->saveSetting('linkedin_icon', 'storage/' . $path);
+        }
+
+        return redirect()->route('dashboard.page-settings.social-links')->with('success', 'لینک‌های اجتماعی با موفقیت ذخیره شد');
+    }
+
+    public function socialLinksDestroy(): RedirectResponse
+    {
+        foreach (['github_url', 'linkedin_url', 'github_icon', 'linkedin_icon'] as $key) {
+            Setting::query()->where('key', $key)->delete();
+        }
+
+        return redirect()->route('dashboard.page-settings.social-links')->with('success', 'لینک‌های اجتماعی با موفقیت حذف شد');
+    }
+
     private function pageSettingsViewData(): array
     {
         return [

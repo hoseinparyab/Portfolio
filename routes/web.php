@@ -91,22 +91,18 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/page-settings/contact/edit', [PageSettingsController::class, 'contactEdit'])->name('page-settings.contact.edit');
         Route::put('/page-settings/contact', [PageSettingsController::class, 'contactUpdate'])->name('page-settings.contact.update');
         Route::delete('/page-settings/contact', [PageSettingsController::class, 'contactDestroy'])->name('page-settings.contact.destroy');
-        Route::post('/page-settings/social', [PageSettingsController::class, 'socialStore'])->name('page-settings.social.store');
-        Route::get('/page-settings/social/edit', [PageSettingsController::class, 'socialEdit'])->name('page-settings.social.edit');
-        Route::put('/page-settings/social', [PageSettingsController::class, 'socialUpdate'])->name('page-settings.social.update');
-        Route::delete('/page-settings/social', [PageSettingsController::class, 'socialDestroy'])->name('page-settings.social.destroy');
-        Route::post('/page-settings/footer', [PageSettingsController::class, 'footerStore'])->name('page-settings.footer.store');
-        Route::get('/page-settings/footer/edit', [PageSettingsController::class, 'footerEdit'])->name('page-settings.footer.edit');
-        Route::put('/page-settings/footer', [PageSettingsController::class, 'footerUpdate'])->name('page-settings.footer.update');
-        Route::delete('/page-settings/footer', [PageSettingsController::class, 'footerDestroy'])->name('page-settings.footer.destroy');
-        Route::post('/page-settings/footer-social', [PageSettingsController::class, 'footerSocialStore'])->name('page-settings.footer-social.store');
-        Route::get('/page-settings/footer-social/edit', [PageSettingsController::class, 'footerSocialEdit'])->name('page-settings.footer-social.edit');
-        Route::put('/page-settings/footer-social', [PageSettingsController::class, 'footerSocialUpdate'])->name('page-settings.footer-social.update');
-        Route::delete('/page-settings/footer-social', [PageSettingsController::class, 'footerSocialDestroy'])->name('page-settings.footer-social.destroy');
-        Route::post('/page-settings/footer-contact', [PageSettingsController::class, 'footerContactStore'])->name('page-settings.footer-contact.store');
-        Route::get('/page-settings/footer-contact/edit', [PageSettingsController::class, 'footerContactEdit'])->name('page-settings.footer-contact.edit');
-        Route::put('/page-settings/footer-contact', [PageSettingsController::class, 'footerContactUpdate'])->name('page-settings.footer-contact.update');
-        Route::delete('/page-settings/footer-contact', [PageSettingsController::class, 'footerContactDestroy'])->name('page-settings.footer-contact.destroy');
+        Route::post('/page-settings/social-links', [PageSettingsController::class, 'socialStore'])->name('page-settings.social-links.store');
+        Route::get('/page-settings/social-links', [PageSettingsController::class, 'socialLinksEdit'])->name('page-settings.social-links');
+        Route::put('/page-settings/social-links', [PageSettingsController::class, 'socialLinksUpdate'])->name('page-settings.social-links.update');
+        Route::delete('/page-settings/social-links', [PageSettingsController::class, 'socialLinksDestroy'])->name('page-settings.social-links.destroy');
+        Route::post('/page-settings/footer-social-links', [PageSettingsController::class, 'footerSocialLinksStore'])->name('page-settings.footer-social-links.store');
+        Route::get('/page-settings/footer-social-links/edit', [PageSettingsController::class, 'footerSocialLinksEdit'])->name('page-settings.footer-social-links.edit');
+        Route::put('/page-settings/footer-social-links', [PageSettingsController::class, 'footerSocialLinksUpdate'])->name('page-settings.footer-social-links.update');
+        Route::delete('/page-settings/footer-social-links', [PageSettingsController::class, 'footerSocialLinksDestroy'])->name('page-settings.footer-social-links.destroy');
+        Route::post('/page-settings/footer-contact-info', [PageSettingsController::class, 'footerContactInfoStore'])->name('page-settings.footer-contact-info.store');
+        Route::get('/page-settings/footer-contact-info/edit', [PageSettingsController::class, 'footerContactInfoEdit'])->name('page-settings.footer-contact-info.edit');
+        Route::put('/page-settings/footer-contact-info', [PageSettingsController::class, 'footerContactInfoUpdate'])->name('page-settings.footer-contact-info.update');
+        Route::delete('/page-settings/footer-contact-info', [PageSettingsController::class, 'footerContactInfoDestroy'])->name('page-settings.footer-contact-info.destroy');
         //Page Settings End
 
     });

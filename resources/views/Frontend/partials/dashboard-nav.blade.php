@@ -45,10 +45,10 @@
           </a>
           <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
-            href="{{ route('dashboard.page-settings') }}"
+            href="{{ route('dashboard.page-settings.social-links') }}"
           >
             <i class="fa-solid fa-briefcase fa-xl"></i>
-            نمونه کار ها
+            لینک‌های اجتماعی
           </a>
           <span class="seperator text-sm">کاربران</span>
           <a

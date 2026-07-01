@@ -70,8 +70,11 @@
             </div>
 
             <div class="mb-5">
-                <input type="file" name="profile_image" id="profile_image"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 p-2.5" />
+                @include('Frontend.partials.file-input', [
+                    'name' => 'profile_image',
+                    'accept' => 'image/*',
+                    'hint' => 'PNG, JPG یا WEBP (حداکثر ۵ مگابایت)',
+                ])
                 @error('profile_image')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -295,11 +298,11 @@
             @method('PUT')
 
             <div class="mb-5">
-                <label for="cv" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    فرمت های مجاز (pdf, word, excel, powerpoint, png, jpg)
-                </label>
-                <input type="file" name="cv" id="cv"
-                    class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" />
+                @include('Frontend.partials.file-input', [
+                    'name' => 'cv',
+                    'buttonText' => 'انتخاب رزومه',
+                    'hint' => 'PDF, Word, Excel, PowerPoint, PNG یا JPG (حداکثر ۱۰ مگابایت)',
+                ])
                 @error('cv')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
