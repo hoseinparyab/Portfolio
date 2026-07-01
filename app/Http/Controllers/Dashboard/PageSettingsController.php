@@ -2,13 +2,24 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\StoreEducationRequest;
+use App\Http\Requests\Dashboard\StoreExperienceRequest;
+use App\Http\Requests\Dashboard\StoreLanguageRequest;
+use App\Http\Requests\Dashboard\StoreSkillRequest;
+use App\Http\Requests\Dashboard\UpdateEducationRequest;
+use App\Http\Requests\Dashboard\UpdateExperienceRequest;
+use App\Http\Requests\Dashboard\UpdateIntroPageSettingsRequest;
+use App\Http\Requests\Dashboard\UpdateLanguageRequest;
+use App\Http\Requests\Dashboard\UpdateResumeRequest;
+use App\Http\Requests\Dashboard\UpdateSkillRequest;
+use App\Http\Requests\Dashboard\UpdateSocialLinksRequest;
+use App\Http\Requests\Dashboard\UpdateSoftSkillsRequest;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Language;
 use App\Models\Setting;
 use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PageSettingsController extends Controller
@@ -33,14 +44,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.page-settings.blog');
     }
 
-    public function introUpdate(Request $request): RedirectResponse
+    public function introUpdate(UpdateIntroPageSettingsRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'fullname'      => ['nullable', 'string', 'max:255'],
-            'job_title'     => ['nullable', 'string', 'max:255'],
-            'bio'           => ['nullable', 'string', 'max:5000'],
-            'profile_image' => ['nullable', 'image', 'max:5120'],
-        ]);
+        $validated = $request->validated();
 
         foreach (['fullname', 'job_title', 'bio'] as $key) {
             if (array_key_exists($key, $validated)) {
@@ -56,17 +62,9 @@ class PageSettingsController extends Controller
         return redirect()->route('dashboard.page-settings')->with('success', 'بخش معرفی با موفقیت ذخیره شد');
     }
 
-    public function educationsStore(Request $request): RedirectResponse
+    public function educationsStore(StoreEducationRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'degree'          => ['required', 'string', 'max:255'],
-            'major'           => ['required', 'string', 'max:255'],
-            'university'      => ['required', 'string', 'max:255'],
-            'education_from'  => ['required', 'string', 'max:255'],
-            'education_till'  => ['required', 'string', 'max:255'],
-        ]);
-
-        Education::query()->create($validated);
+        Education::query()->create($request->validated());
 
         return redirect()->route('dashboard.page-settings', status: 303)->with('success', 'سابقه تحصیلی با موفقیت افزوده شد');
     }
@@ -76,17 +74,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.page-settings-education-edit', compact('education'));
     }
 
-    public function educationsUpdate(Request $request, Education $education): RedirectResponse
+    public function educationsUpdate(UpdateEducationRequest $request, Education $education): RedirectResponse
     {
-        $validated = $request->validate([
-            'degree'          => ['required', 'string', 'max:255'],
-            'major'           => ['required', 'string', 'max:255'],
-            'university'      => ['required', 'string', 'max:255'],
-            'education_from'  => ['required', 'string', 'max:255'],
-            'education_till'  => ['required', 'string', 'max:255'],
-        ]);
-
-        $education->update($validated);
+        $education->update($request->validated());
 
         return redirect()->route('dashboard.page-settings')->with('success', 'سابقه تحصیلی با موفقیت ویرایش شد');
     }
@@ -105,23 +95,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.experiences', compact('experiences'));
     }
 
-    public function experiencesStore(Request $request): RedirectResponse
+    public function experiencesStore(StoreExperienceRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title'       => ['required', 'string', 'max:255'],
-            'company'     => ['required', 'string', 'max:255'],
-            'from'        => ['required', 'string', 'max:255'],
-            'till'        => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:5000'],
-        ]);
-
-        Experience::query()->create([
-            'title'        => $validated['title'],
-            'company'      => $validated['company'],
-            'started_from' => $validated['from'],
-            'ended_till'   => $validated['till'],
-            'description'  => $validated['description'] ?? null,
-        ]);
+        Experience::query()->create($request->experienceAttributes());
 
         return redirect()->route('dashboard.page-settings.experiences', status: 303)
             ->with('success', 'تجربه با موفقیت افزوده شد');
@@ -132,23 +108,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.page-settings-experience-edit', compact('experience'));
     }
 
-    public function experiencesUpdate(Request $request, Experience $experience): RedirectResponse
+    public function experiencesUpdate(UpdateExperienceRequest $request, Experience $experience): RedirectResponse
     {
-        $validated = $request->validate([
-            'title'       => ['required', 'string', 'max:255'],
-            'company'     => ['required', 'string', 'max:255'],
-            'from'        => ['required', 'string', 'max:255'],
-            'till'        => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:5000'],
-        ]);
-
-        $experience->update([
-            'title'        => $validated['title'],
-            'company'      => $validated['company'],
-            'started_from' => $validated['from'],
-            'ended_till'   => $validated['till'],
-            'description'  => $validated['description'] ?? null,
-        ]);
+        $experience->update($request->experienceAttributes());
 
         return redirect()->route('dashboard.page-settings.experiences')
             ->with('success', 'تجربه با موفقیت ویرایش شد');
@@ -162,14 +124,9 @@ class PageSettingsController extends Controller
             ->with('success', 'تجربه با موفقیت حذف شد');
     }
 
-    public function languagesStore(Request $request): RedirectResponse
+    public function languagesStore(StoreLanguageRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'language' => ['required', 'string', 'max:255'],
-            'level'    => ['required', 'string', 'max:255'],
-        ]);
-
-        Language::query()->create($validated);
+        Language::query()->create($request->validated());
 
         return redirect()->route('dashboard.page-settings', status: 303)->with('success', 'زبان با موفقیت افزوده شد');
     }
@@ -179,14 +136,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.page-settings-language-edit', compact('language'));
     }
 
-    public function languagesUpdate(Request $request, Language $language): RedirectResponse
+    public function languagesUpdate(UpdateLanguageRequest $request, Language $language): RedirectResponse
     {
-        $validated = $request->validate([
-            'language' => ['required', 'string', 'max:255'],
-            'level'    => ['required', 'string', 'max:255'],
-        ]);
-
-        $language->update($validated);
+        $language->update($request->validated());
 
         return redirect()->route('dashboard.page-settings')->with('success', 'زبان با موفقیت ویرایش شد');
     }
@@ -205,17 +157,12 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.skills', compact('skills'));
     }
 
-    public function skillsStore(Request $request): RedirectResponse
+    public function skillsStore(StoreSkillRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'icon'  => ['required', 'file', 'mimes:png,jpg,jpeg,svg,webp', 'max:2048'],
-        ]);
-
         $path = $request->file('icon')->store('skill-icons', 'public');
 
         Skill::query()->create([
-            'title' => $validated['title'],
+            'title' => $request->validated('title'),
             'icon'  => 'storage/' . $path,
         ]);
 
@@ -228,14 +175,9 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.page-settings-skill-edit', compact('skill'));
     }
 
-    public function skillsUpdate(Request $request, Skill $skill): RedirectResponse
+    public function skillsUpdate(UpdateSkillRequest $request, Skill $skill): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'icon'  => ['nullable', 'file', 'mimes:png,jpg,jpeg,svg,webp', 'max:2048'],
-        ]);
-
-        $data = ['title' => $validated['title']];
+        $data = ['title' => $request->validated('title')];
 
         if ($request->hasFile('icon')) {
             $path = $request->file('icon')->store('skill-icons', 'public');
@@ -256,12 +198,8 @@ class PageSettingsController extends Controller
             ->with('success', 'مهارت با موفقیت حذف شد');
     }
 
-    public function resumeUpdate(Request $request): RedirectResponse
+    public function resumeUpdate(UpdateResumeRequest $request): RedirectResponse
     {
-        $request->validate([
-            'cv' => ['required', 'file', 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,png,jpg,jpeg', 'max:10240'],
-        ]);
-
         $path = $request->file('cv')->store('resumes', 'public');
 
         $this->saveSetting('cv', 'storage/' . $path);
@@ -269,11 +207,9 @@ class PageSettingsController extends Controller
         return redirect()->route('dashboard.page-settings')->with('success', 'رزومه با موفقیت بارگذاری شد');
     }
 
-    public function softSkillsUpdate(Request $request): RedirectResponse
+    public function softSkillsUpdate(UpdateSoftSkillsRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'soft_skills' => ['nullable', 'string', 'max:5000'],
-        ]);
+        $validated = $request->validated();
 
         $this->saveSetting('soft_skills', $validated['soft_skills'] ?? '');
 
@@ -287,19 +223,14 @@ class PageSettingsController extends Controller
         return view('Frontend.dashboard.social-links', compact('pageSetting'));
     }
 
-    public function socialStore(Request $request): RedirectResponse
+    public function socialStore(UpdateSocialLinksRequest $request): RedirectResponse
     {
         return $this->socialLinksUpdate($request);
     }
 
-    public function socialLinksUpdate(Request $request): RedirectResponse
+    public function socialLinksUpdate(UpdateSocialLinksRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'github_url'    => ['nullable', 'url', 'max:255'],
-            'linkedin_url'  => ['nullable', 'url', 'max:255'],
-            'github_icon'   => ['nullable', 'image', 'max:2048'],
-            'linkedin_icon' => ['nullable', 'image', 'max:2048'],
-        ]);
+        $validated = $request->validated();
 
         foreach (['github_url', 'linkedin_url'] as $key) {
             if (array_key_exists($key, $validated)) {
