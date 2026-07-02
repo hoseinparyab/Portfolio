@@ -66,12 +66,20 @@
             <i class="fa-solid fa-briefcase fa-xl"></i>
             تجربه‌ها
           </a>
-             <a
+          <a
             class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
             href="{{ route('dashboard.page-settings.projects') }}"
           >
             <i class="fa-solid fa-folder fa-xl"></i>
             پروژه ها
+          </a>
+
+          <a
+            class="menu-item flex flex-row gap-3 items-center justify-start text-sm"
+            href="{{ route('dashboard.page-settings.contact-me') }}"
+          >
+            <i class="fa-solid fa-envelope fa-xl"></i>
+            ارتباط با من
           </a>
           <span class="seperator text-sm">کاربران</span>
           <a

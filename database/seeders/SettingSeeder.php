@@ -13,11 +13,14 @@ class SettingSeeder extends Seeder
             'site_name' => 'بنتوفولیو',
             'site_tagline' => 'رزومه آنلاین',
             'contact_email' => 'hello@portfolio.test',
+            'contact_phone' => '09123456789',
             'footer_text' => 'طراحی و اجرا توسط تیم توسعه ناجینو',
             'social_instagram' => 'https://instagram.com',
             'social_linkedin' => 'https://linkedin.com',
             'social_youtube' => 'https://youtube.com',
             'social_whatsapp' => 'https://wa.me',
+            'social_telegram' => 'https://t.me',
+            'social_github' => 'https://github.com',
         ];
 
         foreach ($settings as $key => $value) {

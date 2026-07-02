@@ -90,6 +90,8 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/page-settings/projects/{project}/edit', [PageSettingsController::class, 'projectsEdit'])->name('page-settings.projects.edit');
         Route::put('/page-settings/projects/{project}', [PageSettingsController::class, 'projectsUpdate'])->name('page-settings.projects.update');
         Route::delete('/page-settings/projects/{project}', [PageSettingsController::class, 'projectsDestroy'])->name('page-settings.projects.destroy');
+        Route::get('/page-settings/contact-me', [PageSettingsController::class, 'contactMe'])->name('page-settings.contact-me');
+        Route::put('/page-settings/contact-me', [PageSettingsController::class, 'contactMeUpdate'])->name('page-settings.contact-me.update');
         Route::post('/page-settings/testimonials', [PageSettingsController::class, 'testimonialsStore'])->name('page-settings.testimonials.store');
         Route::get('/page-settings/testimonials/{testimonial}/edit', [PageSettingsController::class, 'testimonialsEdit'])->name('page-settings.testimonials.edit');
         Route::put('/page-settings/testimonials/{testimonial}', [PageSettingsController::class, 'testimonialsUpdate'])->name('page-settings.testimonials.update');

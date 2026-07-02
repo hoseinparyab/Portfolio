@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\StoreExperienceRequest;
 use App\Http\Requests\Dashboard\StoreLanguageRequest;
 use App\Http\Requests\Dashboard\StoreProjectRequest;
 use App\Http\Requests\Dashboard\StoreSkillRequest;
+use App\Http\Requests\Dashboard\UpdateContactMeRequest;
 use App\Http\Requests\Dashboard\UpdateEducationRequest;
 use App\Http\Requests\Dashboard\UpdateExperienceRequest;
 use App\Http\Requests\Dashboard\UpdateIntroPageSettingsRequest;
@@ -265,6 +266,23 @@ class PageSettingsController extends Controller
 
         return redirect()->route('dashboard.page-settings.projects')
             ->with('success', 'پروژه با موفقیت حذف شد');
+    }
+
+    public function contactMe(): View
+    {
+        $settings = $this->settingsObject();
+
+        return view('Frontend.dashboard.contact-me', compact('settings'));
+    }
+
+    public function contactMeUpdate(UpdateContactMeRequest $request): RedirectResponse
+    {
+        foreach ($request->validated() as $key => $value) {
+            $this->saveSetting($key, $value);
+        }
+
+        return redirect()->route('dashboard.page-settings.contact-me')
+            ->with('success', 'راه‌های ارتباطی با موفقیت ذخیره شد');
     }
 
     public function resumeUpdate(UpdateResumeRequest $request): RedirectResponse
