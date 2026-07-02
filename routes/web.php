@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\AccountSettingsController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CommentsController;
 use App\Http\Controllers\Dashboard\PageSettingsController;
@@ -50,7 +51,8 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         //Page Settings
-        Route::get('/account-settings', fn() => view('Frontend.dashboard.account-settings'))->name('account-settings');
+        Route::get('/account-settings', [AccountSettingsController::class, 'index'])->name('account-settings');
+        Route::put('/account', [AccountSettingsController::class, 'update'])->name('account.update');
         Route::get('/page-settings/intro', [PageSettingsController::class, 'intro'])->name('page-settings.intro');
         Route::get('/page-settings/portfolio', [PageSettingsController::class, 'portfolio'])->name('page-settings.portfolio');
         Route::get('/page-settings/blog', [PageSettingsController::class, 'blog'])->name('page-settings.blog');
