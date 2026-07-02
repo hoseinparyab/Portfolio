@@ -115,6 +115,5 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::put('/page-settings/footer-contact-info', [PageSettingsController::class, 'footerContactInfoUpdate'])->name('page-settings.footer-contact-info.update');
         Route::delete('/page-settings/footer-contact-info', [PageSettingsController::class, 'footerContactInfoDestroy'])->name('page-settings.footer-contact-info.destroy');
         //Page Settings End
-
     });
 });

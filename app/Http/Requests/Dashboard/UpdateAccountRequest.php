@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Dashboard;
 
 use Closure;
@@ -69,7 +68,7 @@ class UpdateAccountRequest extends FormRequest
         $reservedUsernames = $this->reservedUsernames();
 
         return [
-            'name' => [
+            'name'     => [
                 'required',
                 Rule::string()->min(3)->max(50),
                 'regex:/^[\p{L}\p{N}\s_.\-]+$/u',
@@ -84,12 +83,12 @@ class UpdateAccountRequest extends FormRequest
                     }
                 },
             ],
-            'email' => [
+            'email'    => [
                 'required',
                 Rule::email(),
                 Rule::unique('users', 'email')->ignore($this->user()),
             ],
-            'bio' => [
+            'bio'      => [
                 'nullable',
                 Rule::string()->max(5000),
             ],
@@ -98,7 +97,7 @@ class UpdateAccountRequest extends FormRequest
                 'confirmed',
                 Password::defaults(),
             ],
-            'avatar' => [
+            'avatar'   => [
                 'nullable',
                 Rule::imageFile()->max(2048),
             ],
@@ -126,8 +125,8 @@ class UpdateAccountRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.regex'   => 'نام کاربری فقط می‌تواند شامل حروف، اعداد، فاصله، خط تیره، نقطه و زیرخط باشد.',
-            'name.not_in'  => 'نام کاربری نمی‌تواند یکی از نام‌های سیستمی باشد.',
+            'name.regex'  => 'نام کاربری فقط می‌تواند شامل حروف، اعداد، فاصله، خط تیره، نقطه و زیرخط باشد.',
+            'name.not_in' => 'نام کاربری نمی‌تواند یکی از نام‌های سیستمی باشد.',
         ];
     }
 }

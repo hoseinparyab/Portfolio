@@ -56,6 +56,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('dashboard.login');
+        return redirect()
+            ->route('dashboard.login')
+            ->with('success', 'خروج از حساب کاربری با موفقیت انجام شد');
     }
 }

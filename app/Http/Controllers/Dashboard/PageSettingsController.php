@@ -185,7 +185,7 @@ class PageSettingsController extends Controller
         $data = ['title' => $request->validated('title')];
 
         if ($request->hasFile('icon')) {
-            $path = $request->file('icon')->store('skill-icons', 'public');
+            $path         = $request->file('icon')->store('skill-icons', 'public');
             $data['icon'] = 'storage/' . $path;
         }
 
@@ -213,7 +213,7 @@ class PageSettingsController extends Controller
     public function projectsStore(StoreProjectRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        $path = $request->file('featured_image')->store('project-images', 'public');
+        $path      = $request->file('featured_image')->store('project-images', 'public');
 
         Portfolio::query()->create([
             'title'          => $validated['title'],
@@ -250,7 +250,7 @@ class PageSettingsController extends Controller
         }
 
         if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('project-images', 'public');
+            $path                   = $request->file('featured_image')->store('project-images', 'public');
             $data['featured_image'] = 'storage/' . $path;
         }
 
@@ -372,14 +372,14 @@ class PageSettingsController extends Controller
     private function uniqueProjectSlug(string $title, ?int $ignoreId = null): string
     {
         $baseSlug = Str::slug($title) ?: 'project';
-        $slug = $baseSlug;
-        $counter = 1;
+        $slug     = $baseSlug;
+        $counter  = 1;
 
         while (
             Portfolio::query()
-                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
-                ->where('slug', $slug)
-                ->exists()
+            ->when($ignoreId, fn($query) => $query->where('id', '!=', $ignoreId))
+            ->where('slug', $slug)
+            ->exists()
         ) {
             $slug = $baseSlug . '-' . $counter;
             $counter++;

@@ -14,8 +14,8 @@
     <div class="admin-info flex flex-row justify-between items-center gap-2">
       <img
         class="admin-pic"
-        src="{{ asset('src/img/Profile Picture.jpg') }}"
-        alt=""
+        src="{{ auth()->user()->avatar ? asset(auth()->user()->avatar) : asset('src/img/Profile Picture.jpg') }}"
+        alt="profile picture"
       />
 
       <div class="info flex flex-col gap-1">

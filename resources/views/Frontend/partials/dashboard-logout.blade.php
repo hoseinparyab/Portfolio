@@ -1,4 +1,4 @@
-<form action="{{ route('dashboard.logout') }}" method="POST">
+<form action="{{ route('dashboard.logout') }}" method="POST" class="w-full">
     @csrf
     <button
         type="submit"
