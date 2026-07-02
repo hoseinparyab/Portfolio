@@ -5,11 +5,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StoreEducationRequest;
 use App\Http\Requests\Dashboard\StoreExperienceRequest;
 use App\Http\Requests\Dashboard\StoreLanguageRequest;
+use App\Http\Requests\Dashboard\StoreProjectRequest;
 use App\Http\Requests\Dashboard\StoreSkillRequest;
 use App\Http\Requests\Dashboard\UpdateEducationRequest;
 use App\Http\Requests\Dashboard\UpdateExperienceRequest;
 use App\Http\Requests\Dashboard\UpdateIntroPageSettingsRequest;
 use App\Http\Requests\Dashboard\UpdateLanguageRequest;
+use App\Http\Requests\Dashboard\UpdateProjectRequest;
 use App\Http\Requests\Dashboard\UpdateResumeRequest;
 use App\Http\Requests\Dashboard\UpdateSkillRequest;
 use App\Http\Requests\Dashboard\UpdateSocialLinksRequest;
@@ -17,9 +19,11 @@ use App\Http\Requests\Dashboard\UpdateSoftSkillsRequest;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Language;
+use App\Models\Portfolio;
 use App\Models\Setting;
 use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PageSettingsController extends Controller
@@ -198,6 +202,71 @@ class PageSettingsController extends Controller
             ->with('success', 'مهارت با موفقیت حذف شد');
     }
 
+    public function projectsIndex(): View
+    {
+        $projects = Portfolio::query()->latest()->get();
+
+        return view('Frontend.dashboard.projects', compact('projects'));
+    }
+
+    public function projectsStore(StoreProjectRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+        $path = $request->file('featured_image')->store('project-images', 'public');
+
+        Portfolio::query()->create([
+            'title'          => $validated['title'],
+            'slug'           => $this->uniqueProjectSlug($validated['title']),
+            'description'    => $validated['description'] ?? null,
+            'project_url'    => $validated['project_url'] ?? null,
+            'status'         => $validated['status'],
+            'featured_image' => 'storage/' . $path,
+            'user_id'        => auth()->id(),
+        ]);
+
+        return redirect()->route('dashboard.page-settings.projects', status: 303)
+            ->with('success', 'پروژه با موفقیت افزوده شد');
+    }
+
+    public function projectsEdit(Portfolio $project): View
+    {
+        return view('Frontend.dashboard.page-settings-project-edit', compact('project'));
+    }
+
+    public function projectsUpdate(UpdateProjectRequest $request, Portfolio $project): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $data = [
+            'title'       => $validated['title'],
+            'description' => $validated['description'] ?? null,
+            'project_url' => $validated['project_url'] ?? null,
+            'status'      => $validated['status'],
+        ];
+
+        if ($project->title !== $validated['title']) {
+            $data['slug'] = $this->uniqueProjectSlug($validated['title'], $project->id);
+        }
+
+        if ($request->hasFile('featured_image')) {
+            $path = $request->file('featured_image')->store('project-images', 'public');
+            $data['featured_image'] = 'storage/' . $path;
+        }
+
+        $project->update($data);
+
+        return redirect()->route('dashboard.page-settings.projects')
+            ->with('success', 'پروژه با موفقیت ویرایش شد');
+    }
+
+    public function projectsDestroy(Portfolio $project): RedirectResponse
+    {
+        $project->delete();
+
+        return redirect()->route('dashboard.page-settings.projects')
+            ->with('success', 'پروژه با موفقیت حذف شد');
+    }
+
     public function resumeUpdate(UpdateResumeRequest $request): RedirectResponse
     {
         $path = $request->file('cv')->store('resumes', 'public');
@@ -280,5 +349,24 @@ class PageSettingsController extends Controller
             ['key' => $key],
             ['value' => $value]
         );
+    }
+
+    private function uniqueProjectSlug(string $title, ?int $ignoreId = null): string
+    {
+        $baseSlug = Str::slug($title) ?: 'project';
+        $slug = $baseSlug;
+        $counter = 1;
+
+        while (
+            Portfolio::query()
+                ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+                ->where('slug', $slug)
+                ->exists()
+        ) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+
+        return $slug;
     }
 }

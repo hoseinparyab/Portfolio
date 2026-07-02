@@ -85,6 +85,7 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::put('/page-settings/resume', [PageSettingsController::class, 'resumeUpdate'])->name('page-settings.resume.update');
         Route::get('/page-settings/soft-skills', fn() => redirect()->route('dashboard.page-settings'));
         Route::put('/page-settings/soft-skills', [PageSettingsController::class, 'softSkillsUpdate'])->name('page-settings.soft-skills.update');
+        Route::get('/page-settings/projects', [PageSettingsController::class, 'projectsIndex'])->name('page-settings.projects');
         Route::post('/page-settings/projects', [PageSettingsController::class, 'projectsStore'])->name('page-settings.projects.store');
         Route::get('/page-settings/projects/{project}/edit', [PageSettingsController::class, 'projectsEdit'])->name('page-settings.projects.edit');
         Route::put('/page-settings/projects/{project}', [PageSettingsController::class, 'projectsUpdate'])->name('page-settings.projects.update');
